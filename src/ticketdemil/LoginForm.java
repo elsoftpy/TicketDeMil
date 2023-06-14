@@ -8,6 +8,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
 import jakarta.xml.bind.DatatypeConverter;
+import java.awt.event.KeyEvent;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 
 /**
@@ -89,6 +91,12 @@ public class LoginForm extends javax.swing.JFrame {
 
         txtUsuario.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtUsuario.setBorder(null);
+        txtUsuario.setNextFocusableComponent(txtPassword);
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -99,16 +107,28 @@ public class LoginForm extends javax.swing.JFrame {
         btnLogin.setForeground(new java.awt.Color(242, 135, 117));
         btnLogin.setText("Ingresar");
         btnLogin.setBorder(null);
+        btnLogin.setNextFocusableComponent(txtUsuario);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
+        btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnLoginKeyReleased(evt);
+            }
+        });
 
+        txtPassword.setNextFocusableComponent(btnLogin);
         txtPassword.setPreferredSize(new java.awt.Dimension(64, 20));
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
             }
         });
 
@@ -173,23 +193,30 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // asigna los valores de los campos a las variables correspondientes
-        String usuario = txtUsuario.getText();
-        String password = txtPassword.getText();
-        // valida que el campo usuario y la contraseña estén cargado
-        if(usuario.isEmpty()){
-            JOptionPane.showMessageDialog(this,"Debe completar el nombre de usuario");
-        }else if(password.isEmpty()){
-            JOptionPane.showMessageDialog(this,"Debe completar el password");
-        }else{
-            // realiza el login del usuario
-            Login(usuario, password);
-        }
+        doLogin();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txtPassword.requestFocus();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyReleased
+
+    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnLogin.requestFocus();
+        }
+    }//GEN-LAST:event_txtPasswordKeyReleased
+
+    private void btnLoginKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLoginKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            doLogin();
+        }
+    }//GEN-LAST:event_btnLoginKeyReleased
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,7 +232,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
-    private void Login(String usuario, String password) {
+    private void Login(String usuario, char[] password) {
         // instancia la conexión a la base de datos
         Connection cn = DBConnection.conectarDB();
         // si no se puede conectar notifica al usuario
@@ -243,12 +270,12 @@ public class LoginForm extends javax.swing.JFrame {
         }   
     }
 
-    private String hashPassword(String password) {
+    private String hashPassword(char[] password) {
         try{
             // instacia la variable md con el algoritmo de encriptación md5
             MessageDigest md = MessageDigest.getInstance("MD5");
             // actualiza la variable md con el valor en bytes de password
-            md.update(password.getBytes());
+            md.update(new String(password).getBytes(StandardCharsets.UTF_8));
             // asigna a una array de bytes la contraseña encriptada
             byte[] digest = md.digest();
             // devuelve la contraseña encriptada en String con mayúsculas
@@ -256,6 +283,21 @@ public class LoginForm extends javax.swing.JFrame {
         }catch(NoSuchAlgorithmException ex){
             JOptionPane.showMessageDialog(this,ex.getMessage());
             return null;
+        }
+    }
+
+    private void doLogin() {
+        // asigna los valores de los campos a las variables correspondientes
+        String usuario = txtUsuario.getText();
+        char[] password = txtPassword.getPassword();
+        // valida que el campo usuario y la contraseña estén cargado
+        if(usuario.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Debe completar el nombre de usuario");
+        }else if(password.length == 0){
+            JOptionPane.showMessageDialog(this,"Debe completar el password");
+        }else{
+            // realiza el login del usuario
+            Login(usuario, password);
         }
     }
 }
