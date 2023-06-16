@@ -4,17 +4,31 @@
  */
 package ticketdemil;
 
+import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author antit
  */
 public class MenuForm extends javax.swing.JFrame {
 
+    // variable para instanciar el panel que contiene el diseño de la aplicación
+    CardLayout cardLayout;
+    JButton activeBtn;
+    frmVerTickets frmVerTickets = new frmVerTickets();
+    frmNuevoTicket frmNuevoTicket = new frmNuevoTicket();
     /**
      * Creates new form MenuForm
      */
     public MenuForm() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
+        // se instancia el panel principal
+        cardLayout = (CardLayout) CardsPanel.getLayout();
+        //activeBtn = (JButton) menuVerTicket
     }
 
     /**
@@ -26,21 +40,136 @@ public class MenuForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSplitPane1 = new javax.swing.JSplitPane();
+        MenuPanel = new javax.swing.JPanel();
+        lblLogoMenu = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblMenuTicket = new javax.swing.JLabel();
+        menuVerTicket = new javax.swing.JButton();
+        menuNuevoTicket = new javax.swing.JButton();
+        CardsPanel = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jSplitPane1.setDividerSize(0);
+        jSplitPane1.setPreferredSize(new java.awt.Dimension(800, 500));
+
+        MenuPanel.setBackground(new java.awt.Color(242, 135, 117));
+        MenuPanel.setMinimumSize(new java.awt.Dimension(250, 500));
+        MenuPanel.setPreferredSize(new java.awt.Dimension(250, 500));
+
+        lblLogoMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pedazo de logo 100px.png"))); // NOI18N
+        lblLogoMenu.setMinimumSize(new java.awt.Dimension(180, 142));
+        lblLogoMenu.setPreferredSize(new java.awt.Dimension(180, 142));
+
+        lblMenuTicket.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        lblMenuTicket.setForeground(new java.awt.Color(204, 255, 0));
+        lblMenuTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMenuTicket.setText("Tickets");
+
+        menuVerTicket.setBackground(new java.awt.Color(242, 135, 117));
+        menuVerTicket.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuVerTicket.setForeground(new java.awt.Color(255, 255, 255));
+        menuVerTicket.setText("Ver tickets");
+        menuVerTicket.setBorder(null);
+        menuVerTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuVerTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVerTicketActionPerformed(evt);
+            }
+        });
+
+        menuNuevoTicket.setBackground(new java.awt.Color(242, 135, 117));
+        menuNuevoTicket.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuNuevoTicket.setForeground(new java.awt.Color(255, 255, 255));
+        menuNuevoTicket.setText("Nuevo ticket");
+        menuNuevoTicket.setBorder(null);
+        menuNuevoTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuNuevoTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoTicketActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
+        MenuPanel.setLayout(MenuPanelLayout);
+        MenuPanelLayout.setHorizontalGroup(
+            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MenuPanelLayout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(MenuPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblMenuTicket)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPanelLayout.createSequentialGroup()
+                                .addGap(0, 28, Short.MAX_VALUE)
+                                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(menuVerTicket, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(menuNuevoTicket, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap())
+        );
+        MenuPanelLayout.setVerticalGroup(
+            MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMenuTicket)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuVerTicket)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuNuevoTicket)
+                .addContainerGap(297, Short.MAX_VALUE))
+        );
+
+        jSplitPane1.setLeftComponent(MenuPanel);
+
+        CardsPanel.setMinimumSize(new java.awt.Dimension(550, 500));
+        CardsPanel.setPreferredSize(new java.awt.Dimension(550, 500));
+        CardsPanel.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(CardsPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuVerTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerTicketActionPerformed
+        CardsPanel.add(frmVerTickets, "verTickets");
+        cardLayout.show(CardsPanel, "verTickets");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_menuVerTicketActionPerformed
+
+    private void menuNuevoTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoTicketActionPerformed
+        CardsPanel.add(frmNuevoTicket, "nuevoTicket");
+        cardLayout.show(CardsPanel, "nuevoTicket");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_menuNuevoTicketActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +207,13 @@ public class MenuForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CardsPanel;
+    private javax.swing.JPanel MenuPanel;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMenuTicket;
+    private javax.swing.JButton menuNuevoTicket;
+    private javax.swing.JButton menuVerTicket;
     // End of variables declaration//GEN-END:variables
 }
