@@ -120,7 +120,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         btnLogin.setBackground(new java.awt.Color(234, 228, 143));
         btnLogin.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(242, 135, 117));
+        btnLogin.setForeground(java.awt.Color.red);
         btnLogin.setText("Ingresar");
         btnLogin.setBorder(null);
         btnLogin.setNextFocusableComponent(txtUsuario);

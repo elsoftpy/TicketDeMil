@@ -7,6 +7,7 @@ package ticketdemil.Formularios;
 import global.DBConnection;
 import global.PaletaColores;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,6 @@ public class ProductoVerForm extends javax.swing.JPanel {
         initComponents();
         this.setBackground(PaletaColores.peach);
         lblTituloForm.setForeground(Color.red);
-        
     }
 
     /**
@@ -42,6 +42,9 @@ public class ProductoVerForm extends javax.swing.JPanel {
         lblTituloForm = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         productosTable = new javax.swing.JTable();
+        btnBorrar = new javax.swing.JButton();
+        btnBorrar1 = new javax.swing.JButton();
+        btnBorrar2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(247, 194, 137));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -54,6 +57,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
         lblTituloForm.setForeground(new java.awt.Color(234, 228, 143));
         lblTituloForm.setText("Listado de Productos");
 
+        productosTable.setFont(new java.awt.Font("Nirmala UI", 0, 12)); // NOI18N
         productosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -62,38 +66,141 @@ public class ProductoVerForm extends javax.swing.JPanel {
                 "ID", "Nombre"
             }
         ));
+        productosTable.setOpaque(false);
         jScrollPane1.setViewportView(productosTable);
+
+        btnBorrar.setBackground(java.awt.Color.red);
+        btnBorrar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("Borrar");
+        btnBorrar.setBorder(null);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+        btnBorrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnBorrarKeyReleased(evt);
+            }
+        });
+
+        btnBorrar1.setBackground(new java.awt.Color(102, 204, 255));
+        btnBorrar1.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnBorrar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar1.setText("Editar");
+        btnBorrar1.setBorder(null);
+        btnBorrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrar1ActionPerformed(evt);
+            }
+        });
+        btnBorrar1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnBorrar1KeyReleased(evt);
+            }
+        });
+
+        btnBorrar2.setBackground(new java.awt.Color(153, 204, 0));
+        btnBorrar2.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnBorrar2.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar2.setText("Nuevo");
+        btnBorrar2.setBorder(null);
+        btnBorrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrar2ActionPerformed(evt);
+            }
+        });
+        btnBorrar2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnBorrar2KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(24, 24, 24)
                 .addComponent(lblTituloForm)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnBorrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBorrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTituloForm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        cargarTabla();
+        if(productosTable.getRowCount() == 0){
+            cargarTabla();
+        }
     }//GEN-LAST:event_formComponentShown
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
+        int a = productosTable.getSelectedRow();
+        if(a < 0){
+            JOptionPane.showMessageDialog(null,"Debes seleccionar una fila");
+        }else {
+            int confirmar = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el registro?");
+            if(JOptionPane.OK_OPTION == confirmar){
+                model.removeRow(a);
+                JOptionPane.showMessageDialog(null, "Registro eliminado");
+            }
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnBorrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrarKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+           // doLogin();
+        }
+    }//GEN-LAST:event_btnBorrarKeyReleased
+
+    private void btnBorrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrar1ActionPerformed
+
+    private void btnBorrar1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrar1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrar1KeyReleased
+
+    private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrar2ActionPerformed
+
+    private void btnBorrar2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrar2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrar2KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBorrar1;
+    private javax.swing.JButton btnBorrar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloForm;
     private javax.swing.JTable productosTable;
@@ -114,7 +221,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
                 // ejecuta la consulta y guarda el resultado en una variable tipo result set
                 ResultSet rs = st.executeQuery();
                 // si el result set tiene registros (nos logueamos correctamente)
-                if(rs.next()){
+                while(rs.next()){
                     //carga el id del producto en la variable id
                     //String id = String.valueOf(rs.getInt("id_producto"));
                     // carga el nombre del producto en la variable nombre
@@ -126,8 +233,6 @@ public class ProductoVerForm extends javax.swing.JPanel {
                     };
                     DefaultTableModel dt = (DefaultTableModel) productosTable.getModel();
                     dt.addRow(datosTabla);
-                }else{
-                    JOptionPane.showMessageDialog(this, "Tabla vacía");
                 }
             }catch(SQLException ex){
                 JOptionPane.showMessageDialog(this,ex.getMessage());
