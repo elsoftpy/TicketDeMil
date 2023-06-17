@@ -4,6 +4,9 @@
  */
 package ticketdemil;
 
+import ticketdemil.Formularios.LoginForm;
+import java.awt.Color;
+
 /**
  *
  * @author antit

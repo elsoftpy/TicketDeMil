@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ticketdemil;
+package ticketdemil.Formularios;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,6 +11,7 @@ import jakarta.xml.bind.DatatypeConverter;
 import java.awt.event.KeyEvent;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
+import global.DBConnection;
 
 /**
  *
@@ -23,6 +24,8 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
+        txtUsuario.setText("elias");
+        txtPassword.setText("asstalavista");
     }
 
     /**
@@ -193,6 +196,7 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // hace el login
         doLogin();
     }//GEN-LAST:event_btnLoginActionPerformed
 
