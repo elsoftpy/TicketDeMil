@@ -4,6 +4,16 @@
  */
 package ticketdemil.Formularios;
 
+import global.DBConnection;
+import global.PaletaColores;
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author antit
@@ -15,6 +25,9 @@ public class ProductoVerForm extends javax.swing.JPanel {
      */
     public ProductoVerForm() {
         initComponents();
+        this.setBackground(PaletaColores.peach);
+        lblTituloForm.setForeground(Color.red);
+        
     }
 
     /**
@@ -26,30 +39,99 @@ public class ProductoVerForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblTituloForm = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        productosTable = new javax.swing.JTable();
 
-        jLabel1.setText("Ver Productos");
+        setBackground(new java.awt.Color(247, 194, 137));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setForeground(new java.awt.Color(234, 228, 143));
+        lblTituloForm.setText("Listado de Productos");
+
+        productosTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre"
+            }
+        ));
+        jScrollPane1.setViewportView(productosTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(150, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(176, 176, 176))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblTituloForm)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jLabel1)
-                .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTituloForm)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        cargarTabla();
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTituloForm;
+    private javax.swing.JTable productosTable;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        Connection cn = DBConnection.conectarDB();
+        if(cn == null){
+            JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
+        }else{
+            try{
+                // sentencia sql para buscar todos los productos
+                String sql = "SELECT * FROM productos p";
+                // prepara la sentencia sql para dar mayor seguridad a la aplicación
+                PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
+                
+
+                // ejecuta la consulta y guarda el resultado en una variable tipo result set
+                ResultSet rs = st.executeQuery();
+                // si el result set tiene registros (nos logueamos correctamente)
+                if(rs.next()){
+                    //carga el id del producto en la variable id
+                    //String id = String.valueOf(rs.getInt("id_producto"));
+                    // carga el nombre del producto en la variable nombre
+                    //String nombre = rs.getString("nombre_producto");
+                    
+                    String datosTabla[] = {
+                        String.valueOf(rs.getInt("id_producto")),
+                        rs.getString("nombre_producto")
+                    };
+                    DefaultTableModel dt = (DefaultTableModel) productosTable.getModel();
+                    dt.addRow(datosTabla);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Tabla vacía");
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(this,ex.getMessage());
+            }
+        }
+    }
 }

@@ -4,8 +4,6 @@
  */
 package ticketdemil.Formularios;
 
-import ticketdemil.Formularios.TicketVerForm;
-import ticketdemil.Formularios.TicketNuevoForm;
 import global.PaletaColores;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -77,6 +75,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerTicket = new javax.swing.JButton();
         menuEditarTicket = new javax.swing.JButton();
         CardsPanel = new javax.swing.JPanel();
+        homePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,7 +97,7 @@ public class MenuForm extends javax.swing.JFrame {
         lblMenuProducto.setText("Producto");
 
         menuVerProductos.setBackground(new java.awt.Color(242, 135, 117));
-        menuVerProductos.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuVerProductos.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuVerProductos.setForeground(new java.awt.Color(255, 255, 255));
         menuVerProductos.setText("Ver productos");
         menuVerProductos.setBorder(null);
@@ -107,6 +106,9 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerProductos.setFocusPainted(false);
         menuVerProductos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerProductos.setMaximumSize(new java.awt.Dimension(113, 22));
+        menuVerProductos.setMinimumSize(new java.awt.Dimension(113, 22));
+        menuVerProductos.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuVerProductosActionPerformed(evt);
@@ -114,7 +116,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuNuevoProductos.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoProductos.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuNuevoProductos.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuNuevoProductos.setForeground(new java.awt.Color(255, 255, 255));
         menuNuevoProductos.setText("Nuevo producto");
         menuNuevoProductos.setBorder(null);
@@ -123,6 +125,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoProductos.setFocusPainted(false);
         menuNuevoProductos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoProductos.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuNuevoProductosActionPerformed(evt);
@@ -130,7 +133,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuEditarProducto.setBackground(new java.awt.Color(242, 135, 117));
-        menuEditarProducto.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuEditarProducto.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuEditarProducto.setForeground(new java.awt.Color(255, 255, 255));
         menuEditarProducto.setText("Editar producto");
         menuEditarProducto.setBorder(null);
@@ -139,6 +142,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarProducto.setFocusPainted(false);
         menuEditarProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarProducto.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuEditarProductoActionPerformed(evt);
@@ -151,7 +155,7 @@ public class MenuForm extends javax.swing.JFrame {
         lblMenuCliente.setText("Cliente");
 
         menuVerCliente.setBackground(new java.awt.Color(242, 135, 117));
-        menuVerCliente.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuVerCliente.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuVerCliente.setForeground(new java.awt.Color(255, 255, 255));
         menuVerCliente.setText("Ver clientes");
         menuVerCliente.setBorder(null);
@@ -160,6 +164,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerCliente.setFocusPainted(false);
         menuVerCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerCliente.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuVerClienteActionPerformed(evt);
@@ -167,7 +172,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuNuevoCliente.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoCliente.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuNuevoCliente.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuNuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
         menuNuevoCliente.setText("Nuevo cliente");
         menuNuevoCliente.setBorder(null);
@@ -176,6 +181,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoCliente.setFocusPainted(false);
         menuNuevoCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoCliente.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuNuevoClienteActionPerformed(evt);
@@ -183,7 +189,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuEditarCliente.setBackground(new java.awt.Color(242, 135, 117));
-        menuEditarCliente.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuEditarCliente.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuEditarCliente.setForeground(new java.awt.Color(255, 255, 255));
         menuEditarCliente.setText("Editar cliente");
         menuEditarCliente.setBorder(null);
@@ -192,6 +198,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarCliente.setFocusPainted(false);
         menuEditarCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarCliente.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuEditarClienteActionPerformed(evt);
@@ -204,7 +211,7 @@ public class MenuForm extends javax.swing.JFrame {
         lblMenuEmpleado.setText("Empleado");
 
         menuVerEmpleado.setBackground(new java.awt.Color(242, 135, 117));
-        menuVerEmpleado.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuVerEmpleado.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuVerEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         menuVerEmpleado.setText("Ver empleados");
         menuVerEmpleado.setBorder(null);
@@ -213,6 +220,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerEmpleado.setFocusPainted(false);
         menuVerEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerEmpleado.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuVerEmpleadoActionPerformed(evt);
@@ -220,7 +228,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuNuevoEmpleado.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoEmpleado.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuNuevoEmpleado.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuNuevoEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         menuNuevoEmpleado.setText("Nuevo empleado");
         menuNuevoEmpleado.setBorder(null);
@@ -229,6 +237,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoEmpleado.setFocusPainted(false);
         menuNuevoEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoEmpleado.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuNuevoEmpleadoActionPerformed(evt);
@@ -236,7 +245,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuEditarEmpleado.setBackground(new java.awt.Color(242, 135, 117));
-        menuEditarEmpleado.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuEditarEmpleado.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuEditarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         menuEditarEmpleado.setText("Editar empleado");
         menuEditarEmpleado.setBorder(null);
@@ -245,6 +254,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarEmpleado.setFocusPainted(false);
         menuEditarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarEmpleado.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuEditarEmpleadoActionPerformed(evt);
@@ -257,7 +267,7 @@ public class MenuForm extends javax.swing.JFrame {
         lblMenuTicket.setText("Ticket");
 
         menuNuevoTicket.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoTicket.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuNuevoTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuNuevoTicket.setForeground(new java.awt.Color(255, 255, 255));
         menuNuevoTicket.setText("Nuevo ticket");
         menuNuevoTicket.setBorder(null);
@@ -266,6 +276,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoTicket.setFocusPainted(false);
         menuNuevoTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoTicket.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuNuevoTicketActionPerformed(evt);
@@ -273,7 +284,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuVerTicket.setBackground(new java.awt.Color(242, 135, 117));
-        menuVerTicket.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuVerTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuVerTicket.setForeground(new java.awt.Color(255, 255, 255));
         menuVerTicket.setText("Ver ticket");
         menuVerTicket.setBorder(null);
@@ -282,6 +293,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerTicket.setFocusPainted(false);
         menuVerTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerTicket.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuVerTicketActionPerformed(evt);
@@ -289,7 +301,7 @@ public class MenuForm extends javax.swing.JFrame {
         });
 
         menuEditarTicket.setBackground(new java.awt.Color(242, 135, 117));
-        menuEditarTicket.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
+        menuEditarTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuEditarTicket.setForeground(new java.awt.Color(255, 255, 255));
         menuEditarTicket.setText("Editar ticket");
         menuEditarTicket.setBorder(null);
@@ -298,6 +310,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarTicket.setFocusPainted(false);
         menuEditarTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarTicket.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuEditarTicketActionPerformed(evt);
@@ -309,86 +322,99 @@ public class MenuForm extends javax.swing.JFrame {
         MenuPanelLayout.setHorizontalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MenuPanelLayout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblMenuProducto))
-                            .addGroup(MenuPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblMenuCliente))
-                            .addGroup(MenuPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblMenuEmpleado))
-                            .addGroup(MenuPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblMenuTicket)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuPanelLayout.createSequentialGroup()
-                                .addGap(0, 28, Short.MAX_VALUE)
-                                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(menuVerProductos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuNuevoProductos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuEditarProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuVerCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuNuevoCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuEditarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuVerEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuEditarEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuNuevoTicket, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuVerTicket, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(menuEditarTicket, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap())
+                .addGap(81, 81, 81)
+                .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lblMenuProducto))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuNuevoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lblMenuCliente))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuVerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lblMenuEmpleado))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuVerEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuEditarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lblMenuTicket))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuVerTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuNuevoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(menuEditarTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(lblMenuProducto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuVerProductos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuNuevoProductos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuEditarProducto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuNuevoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
                 .addComponent(lblMenuCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuVerCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuNuevoCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuEditarCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addComponent(menuVerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
                 .addComponent(lblMenuEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuVerEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuNuevoEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuEditarEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addComponent(menuVerEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuEditarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
                 .addComponent(lblMenuTicket)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuVerTicket)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuNuevoTicket)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(menuEditarTicket)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(menuVerTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuNuevoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(menuEditarTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jSplitPane1.setLeftComponent(MenuPanel);
@@ -396,6 +422,22 @@ public class MenuForm extends javax.swing.JFrame {
         CardsPanel.setMinimumSize(new java.awt.Dimension(550, 500));
         CardsPanel.setPreferredSize(new java.awt.Dimension(550, 500));
         CardsPanel.setLayout(new java.awt.CardLayout());
+
+        homePanel.setBackground(new java.awt.Color(247, 194, 137));
+
+        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
+        homePanel.setLayout(homePanelLayout);
+        homePanelLayout.setHorizontalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 608, Short.MAX_VALUE)
+        );
+        homePanelLayout.setVerticalGroup(
+            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 747, Short.MAX_VALUE)
+        );
+
+        CardsPanel.add(homePanel, "card2");
+
         jSplitPane1.setRightComponent(CardsPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -547,6 +589,7 @@ public class MenuForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardsPanel;
     private javax.swing.JPanel MenuPanel;
+    private javax.swing.JPanel homePanel;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblLogoMenu;
