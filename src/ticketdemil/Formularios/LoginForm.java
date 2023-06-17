@@ -247,7 +247,7 @@ public class LoginForm extends javax.swing.JFrame {
                 // encripta el password
                 String passwordHash = hashPassword(password);
                 // sentencia sql para buscar el usuario
-                String sql = "SELECT * FROM usuarios u WHERE u.usuario = ? and u.password = ?";
+                String sql = "SELECT * FROM usuarios u WHERE u.username = ? and u.password = ?";
                 // prepara la sentencia sql para dar mayor seguridad a la aplicación
                 PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
                 
