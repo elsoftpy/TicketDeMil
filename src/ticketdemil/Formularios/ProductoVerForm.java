@@ -166,9 +166,9 @@ public class ProductoVerForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(productosTable.getRowCount() == 0){
+        //if(productosTable.getRowCount() == 0){
             cargarTabla();
-        }
+        //}
     }//GEN-LAST:event_formComponentShown
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -242,6 +242,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
+        productosTable.removeAll();
         Connection cn = DBConnection.conectarDB();
         if(cn == null){
             JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
