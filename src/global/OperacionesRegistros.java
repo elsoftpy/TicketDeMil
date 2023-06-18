@@ -4,6 +4,8 @@
  */
 package global;
 
+
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,14 +15,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OperacionesRegistros {
     
-    public static void eliminar(DefaultTableModel model, int a)
+    public static void insertar(List<String> campos, String procedure)
+    {
+        DBStoreProcedures sp = new DBStoreProcedures(procedure);
+        try{
+            sp.ejecutarInsert(campos);
+            JOptionPane.showMessageDialog(null, "Registro insertado");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public static void eliminar(DefaultTableModel model, int a, String procedure)
     {
         if(a < 0){
             JOptionPane.showMessageDialog(null,"Debes seleccionar una fila");
         }else {
             int confirmar = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el registro?");
             if(JOptionPane.OK_OPTION == confirmar){
-                DBStoreProcedures sp = new DBStoreProcedures("sp_borrar_producto");
+                DBStoreProcedures sp = new DBStoreProcedures(procedure);
                 try{
                    // if(sp.ejecutarDelete(Integer.parseInt(productosTable.getValueAt(a, 0).toString()))){
                         //boolean resultado = sp.ejecutarDelete(Integer.parseInt(productosTable.getValueAt(a, 0).toString()));
@@ -35,4 +48,6 @@ public class OperacionesRegistros {
             }
         }
     }
+    
+    
 }

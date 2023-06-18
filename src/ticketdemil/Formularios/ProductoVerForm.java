@@ -174,7 +174,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
         int a = productosTable.getSelectedRow();
-        OperacionesRegistros.eliminar(model, a);
+        OperacionesRegistros.eliminar(model, a, "sp_borrar_producto");
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnBorrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrarKeyReleased

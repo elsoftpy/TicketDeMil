@@ -5,6 +5,7 @@
 package global;
 
 import java.sql.*;
+import java.util.List;
 
 /**
  *
@@ -18,19 +19,46 @@ public class DBStoreProcedures {
         nombreSP = nombre;
     }
     
+    public void ejecutarInsert(List<String> campos) throws Exception
+    {
+        CallableStatement cst;
+        try{
+            Connection cn;
+            cn = DBConnection.conectarDB();
+            //cst = cn.prepareCall("{call ?(?)}" );
+            StringBuilder builder = new StringBuilder();
+            for (String campo : campos) {
+                builder.append("?,");
+            }
+            String parametros = builder.deleteCharAt(builder.length() - 1).toString();
+            cst = cn.prepareCall("{call ?("+parametros+")}") ;
+            int index = 1;
+            cst.setString(index, nombreSP);
+            for(String campo : campos){
+                index++;
+                cst.setString(index++, campo);
+            }
+            cst.execute();
+            cn.close();
+        }catch(SQLException ex){
+            throw new Exception(ex.getMessage());
+        }
+    }
+    
     public void ejecutarDelete(int id) throws Exception
     {
         CallableStatement cst;
         
         try{
-            //cst = DBConnection.conectarDB().prepareCall("{call "+ nombreSP +"(?)}" );
-            cst = DBConnection.conectarDB().prepareCall("{call ?(?)}" );
+            Connection cn;
+            cn = DBConnection.conectarDB();
+            cst = cn.prepareCall("{call ?(?)}" );
             cst.setString(1, nombreSP);
             cst.setInt(2, id);
-            //return  cst.execute();
+            cst.execute();
+            cn.close();
         }catch(SQLException ex){
-            //throw new Exception(ex.getMessage());
-            throw new Exception("tkk la erea");
+            throw new Exception(ex.getMessage());
         }
     }
     
