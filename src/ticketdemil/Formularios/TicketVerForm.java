@@ -4,6 +4,14 @@
  */
 package ticketdemil.Formularios;
 
+import global.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author antit
@@ -27,31 +35,116 @@ public class TicketVerForm extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ticketsTable = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(102, 255, 255));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
-        jLabel1.setText("Ver Ticket");
+        jLabel1.setText("LISTADO DE TICKETS");
+
+        ticketsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nro Ticket", "Usuario", "Descripción", "Fecha Emisión", "Fecha Inicio", "Fecha Fin", "Estado", "Producto", "Dias Estimados", "Prioridad"
+            }
+        ));
+        jScrollPane1.setViewportView(ticketsTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jLabel1)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1))
+                .addGap(96, 96, 96))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if(ticketsTable.getRowCount()== 0){
+        cargarTabla();            
+        }
+    }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable ticketsTable;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        Connection cn = DBConnection.conectarDB();
+        
+        if(cn == null){
+            JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
+        }else{
+            try{
+                // sentencia sql para buscar todos los productos
+                String sql ="Select t.ID_TICKET,\n" +
+                    "	   u.NOMBRE+' '+u.APELLIDO as NOMBREAPELLIDO, \n" +
+                    "	   t.DESCRIPCION,\n" +
+                    "	   t.FECHA_EMISION,\n" +
+                    "	   t.FECHA_INICIO,\n" +
+                    "	   t.FECHA_FIN,\n" +
+                    "	   t.ESTADO,\n" +
+                    "	   p.NOMBRE_PRODUCTO as PRODUCTO,\n" +
+                    "	   t.DIAS_ESTIMADO,\n" +
+                    "	   t.PRIORIDAD\n" +
+                    "	   from TICKETS t\n" +
+                    "inner join USUARIOS u on t.ID_USUARIO = u.ID_USUARIO\n" +
+                    "inner join PRODUCTOS p on t.ID_PRODUCTO = p.ID_PRODUCTO";
+                // prepara la sentencia sql para dar mayor seguridad a la aplicación
+                PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
+                
+
+                // ejecuta la consulta y guarda el resultado en una variable tipo result set
+                ResultSet rs = st.executeQuery();
+                // si el result set tiene registros (nos logueamos correctamente)
+                while(rs.next()){
+                    //carga el id del producto en la variable id
+                    //String id = String.valueOf(rs.getInt("id_producto"));
+                    // carga el nombre del producto en la variable nombre
+                    //String nombre = rs.getString("nombre_producto");
+                    
+                    String datosTabla[] = {
+                        String.valueOf(rs.getInt("id_ticket")),
+                        rs.getString("nombreapellido"),
+                        rs.getString("descripcion"),
+                        String.valueOf(rs.getDate("fecha_emision")),
+                        String.valueOf(rs.getDate("fecha_inicio")),
+                        String.valueOf(rs.getDate("fecha_fin")),
+                        rs.getString("estado"),
+                        rs.getString("producto"),
+                        String.valueOf(rs.getInt("dias_estimado")),
+                        rs.getString("prioridad"),
+                    };
+                    DefaultTableModel dt = (DefaultTableModel) ticketsTable.getModel();
+                    dt.addRow(datosTabla);
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(this,ex.getMessage());
+            }
+        }
+    }
+    
 }
