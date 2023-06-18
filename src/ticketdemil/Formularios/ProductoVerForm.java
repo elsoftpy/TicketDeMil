@@ -15,9 +15,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import models.Usuarios;
 
 /**
  *
@@ -167,6 +169,8 @@ public class ProductoVerForm extends javax.swing.JPanel {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
             cargarTabla();
+            List<String> usuario = Usuarios.getUsuario();
+            JOptionPane.showMessageDialog(null, usuario.get(0));
     }//GEN-LAST:event_formComponentShown
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed

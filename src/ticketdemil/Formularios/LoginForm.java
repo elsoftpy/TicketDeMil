@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import global.DBConnection;
+import models.Usuarios;
 
 /**
  *
@@ -259,6 +260,13 @@ public class LoginForm extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery();
                 // si el result set tiene registros (nos logueamos correctamente)
                 if(rs.next()){
+                    Usuarios.setUsuario(
+                            String.valueOf(rs.getInt("id_usuario")),
+                            rs.getString("username"),
+                            rs.getString("nombre"), 
+                            rs.getString("apellido"), 
+                            rs.getString("email"),
+                            rs.getString("telefono"));
                     // instancia el formualrio del menu
                     MenuForm menuForm = new MenuForm();
                     // muestra el formualrio del menu
