@@ -4,6 +4,7 @@
  */
 package ticketdemil.Formularios;
 
+import global.ControladorMenu;
 import global.PaletaColores;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -42,7 +43,7 @@ public class MenuForm extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         // se instancia el panel principal
         cardLayout = (CardLayout) CardsPanel.getLayout();
-        activeBtn = (JButton) menuVerProductos;
+        //activeBtn = (JButton) menuVerProductos;
     }
 
     /**
@@ -84,6 +85,7 @@ public class MenuForm extends javax.swing.JFrame {
 
         MenuPanel.setBackground(new java.awt.Color(242, 135, 117));
         MenuPanel.setMinimumSize(new java.awt.Dimension(250, 500));
+        MenuPanel.setName("menuPanel"); // NOI18N
         MenuPanel.setPreferredSize(new java.awt.Dimension(250, 500));
 
         lblLogoMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -108,6 +110,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         menuVerProductos.setMaximumSize(new java.awt.Dimension(113, 22));
         menuVerProductos.setMinimumSize(new java.awt.Dimension(113, 22));
+        menuVerProductos.setName("btnVerProducto"); // NOI18N
         menuVerProductos.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +128,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoProductos.setFocusPainted(false);
         menuNuevoProductos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoProductos.setName("btnNuevoProducto"); // NOI18N
         menuNuevoProductos.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +146,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarProducto.setFocusPainted(false);
         menuEditarProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarProducto.setName("btnEditarProducto"); // NOI18N
         menuEditarProducto.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +169,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerCliente.setFocusPainted(false);
         menuVerCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerCliente.setName("btnVerCliente"); // NOI18N
         menuVerCliente.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +187,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoCliente.setFocusPainted(false);
         menuNuevoCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoCliente.setName("btnNuevoCliente"); // NOI18N
         menuNuevoCliente.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,6 +205,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarCliente.setFocusPainted(false);
         menuEditarCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarCliente.setName("btnEditarCliente"); // NOI18N
         menuEditarCliente.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,6 +228,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerEmpleado.setFocusPainted(false);
         menuVerEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerEmpleado.setName("btnVerEmpleado"); // NOI18N
         menuVerEmpleado.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +246,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoEmpleado.setFocusPainted(false);
         menuNuevoEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoEmpleado.setName("btnNuevoEmpleado"); // NOI18N
         menuNuevoEmpleado.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +264,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarEmpleado.setFocusPainted(false);
         menuEditarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarEmpleado.setName("btnEditarEmpleado"); // NOI18N
         menuEditarEmpleado.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,6 +287,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoTicket.setFocusPainted(false);
         menuNuevoTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoTicket.setName("btnVerTicket"); // NOI18N
         menuNuevoTicket.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,6 +305,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerTicket.setFocusPainted(false);
         menuVerTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerTicket.setName("btnNuevoTicket"); // NOI18N
         menuVerTicket.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,6 +323,7 @@ public class MenuForm extends javax.swing.JFrame {
         menuEditarTicket.setFocusPainted(false);
         menuEditarTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuEditarTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuEditarTicket.setName("btnEditarTicket"); // NOI18N
         menuEditarTicket.setPreferredSize(new java.awt.Dimension(0, 22));
         menuEditarTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,6 +434,7 @@ public class MenuForm extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(MenuPanel);
 
         CardsPanel.setMinimumSize(new java.awt.Dimension(550, 500));
+        CardsPanel.setName("cardsPanel"); // NOI18N
         CardsPanel.setPreferredSize(new java.awt.Dimension(550, 500));
         CardsPanel.setLayout(new java.awt.CardLayout());
 
@@ -455,100 +470,74 @@ public class MenuForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerProductosActionPerformed
-        // agrega al cardlayout el jpenel del formulario para ver tickets
-        CardsPanel.add(productoVerForm, "verTickets");
-        cardLayout.show(CardsPanel, "verTickets");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, productoVerForm, "verProducto");
+        ControladorMenu.nombreMenuNuevo = "btnVerProducto";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuVerProductosActionPerformed
 
     private void menuNuevoProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoProductosActionPerformed
-        CardsPanel.add(productoNuevoForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, productoNuevoForm, "nuevoProducto");
+        ControladorMenu.nombreMenuNuevo = "btnNuevoProducto";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuNuevoProductosActionPerformed
 
     private void menuEditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarProductoActionPerformed
-        CardsPanel.add(productoEditarForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }//GEN-LAST:event_menuEditarProductoActionPerformed
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, productoEditarForm, "editarProducto");
+        ControladorMenu.nombreMenuNuevo = "btnEditarProducto";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);    }//GEN-LAST:event_menuEditarProductoActionPerformed
 
     private void menuVerClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerClienteActionPerformed
-        CardsPanel.add(clienteVerForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, clienteVerForm, "verCliente");
+        ControladorMenu.nombreMenuNuevo = "btnVerCliente";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuVerClienteActionPerformed
 
     private void menuNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoClienteActionPerformed
-        CardsPanel.add(clienteNuevoForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, clienteNuevoForm, "nuevoCliente");
+        ControladorMenu.nombreMenuNuevo = "btnNuevoCliente";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuNuevoClienteActionPerformed
 
     private void menuEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarClienteActionPerformed
-        CardsPanel.add(clienteEditarForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, clienteEditarForm, "editarCliente");
+        ControladorMenu.nombreMenuNuevo = "btnEditarCliente";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuEditarClienteActionPerformed
 
     private void menuVerEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerEmpleadoActionPerformed
-        CardsPanel.add(empleadoVerForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, empleadoVerForm, "verEmpleado");
+        ControladorMenu.nombreMenuNuevo = "btnVerEmpleado";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuVerEmpleadoActionPerformed
 
     private void menuNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoEmpleadoActionPerformed
-        CardsPanel.add(empleadoNuevoForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, empleadoNuevoForm, "nuevoEmpleado");
+        ControladorMenu.nombreMenuNuevo = "btnNuevoEmpleado";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuNuevoEmpleadoActionPerformed
 
     private void menuEditarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarEmpleadoActionPerformed
-        CardsPanel.add(empleadoEditarForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, empleadoEditarForm, "editarProducto");
+        ControladorMenu.nombreMenuNuevo = "btnEditarEmpleado";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuEditarEmpleadoActionPerformed
 
     private void menuNuevoTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoTicketActionPerformed
-        CardsPanel.add(ticketVerForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, ticketNuevoForm, "nuevoTicket");
+        ControladorMenu.nombreMenuNuevo = "btnNuevoTicket";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuNuevoTicketActionPerformed
 
     private void menuVerTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerTicketActionPerformed
-        CardsPanel.add(ticketNuevoForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, ticketVerForm, "verTicket");
+        ControladorMenu.nombreMenuNuevo = "btnVerTicket";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuVerTicketActionPerformed
 
     private void menuEditarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarTicketActionPerformed
-        CardsPanel.add(ticketEditarForm, "nuevoTicket");
-        cardLayout.show(CardsPanel, "nuevoTicket");
-        cambiarBotonActivo((JButton) evt.getSource());
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, ticketEditarForm, "editarTicket");
+        ControladorMenu.nombreMenuNuevo = "btnEditarTicket";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuEditarTicketActionPerformed
 
     /**
@@ -611,10 +600,10 @@ public class MenuForm extends javax.swing.JFrame {
     private javax.swing.JButton menuVerTicket;
     // End of variables declaration//GEN-END:variables
 
-    private void cambiarBotonActivo(JButton currentBtn) {
-        currentBtn.setBorderPainted(false);
-        activeBtn.setBackground(PaletaColores.salmon);
-        currentBtn.setBackground(Color.red);
-        activeBtn = currentBtn;
-    }
+//    private void cambiarBotonActivo(JButton currentBtn) {
+//        currentBtn.setBorderPainted(false);
+//        activeBtn.setBackground(PaletaColores.salmon);
+//        currentBtn.setBackground(Color.red);
+//        activeBtn = currentBtn;
+//    }
 }

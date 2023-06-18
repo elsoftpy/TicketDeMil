@@ -4,8 +4,11 @@
  */
 package ticketdemil.Formularios;
 
+import global.ControladorMenu;
 import global.DBConnection;
+import global.OperacionesRegistros;
 import global.PaletaColores;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -13,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +24,13 @@ import javax.swing.table.DefaultTableModel;
  * @author antit
  */
 public class ProductoVerForm extends javax.swing.JPanel {
-
+    
+    // en esta variable vamos a guardar el contenedor de los paneles
+    JPanel cardsPanel;
+    // se instancias los formularios a los que van a llevar los botones Nuevo y Editar
+    ProductoNuevoForm productoNuevoForm = new ProductoNuevoForm();
+    ProductoEditarForm productoEditarForm = new ProductoEditarForm();
+    
     /**
      * Creates new form FrmVerProductos
      */
@@ -28,6 +38,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
         initComponents();
         this.setBackground(PaletaColores.peach);
         lblTituloForm.setForeground(Color.red);
+        //activeBtn = (JButton) MenuForm.
     }
 
     /**
@@ -42,9 +53,9 @@ public class ProductoVerForm extends javax.swing.JPanel {
         lblTituloForm = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         productosTable = new javax.swing.JTable();
+        btnNuevo = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
-        btnBorrar1 = new javax.swing.JButton();
-        btnBorrar2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(247, 194, 137));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -69,6 +80,38 @@ public class ProductoVerForm extends javax.swing.JPanel {
         productosTable.setOpaque(false);
         jScrollPane1.setViewportView(productosTable);
 
+        btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
+        btnNuevo.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.setBorder(null);
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        btnNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnNuevoKeyReleased(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(102, 204, 255));
+        btnEditar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.setBorder(null);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        btnEditar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnEditarKeyReleased(evt);
+            }
+        });
+
         btnBorrar.setBackground(java.awt.Color.red);
         btnBorrar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
         btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,38 +125,6 @@ public class ProductoVerForm extends javax.swing.JPanel {
         btnBorrar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnBorrarKeyReleased(evt);
-            }
-        });
-
-        btnBorrar1.setBackground(new java.awt.Color(102, 204, 255));
-        btnBorrar1.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
-        btnBorrar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnBorrar1.setText("Editar");
-        btnBorrar1.setBorder(null);
-        btnBorrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBorrar1ActionPerformed(evt);
-            }
-        });
-        btnBorrar1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                btnBorrar1KeyReleased(evt);
-            }
-        });
-
-        btnBorrar2.setBackground(new java.awt.Color(153, 204, 0));
-        btnBorrar2.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
-        btnBorrar2.setForeground(new java.awt.Color(255, 255, 255));
-        btnBorrar2.setText("Nuevo");
-        btnBorrar2.setBorder(null);
-        btnBorrar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBorrar2ActionPerformed(evt);
-            }
-        });
-        btnBorrar2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                btnBorrar2KeyReleased(evt);
             }
         });
 
@@ -131,9 +142,9 @@ public class ProductoVerForm extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnBorrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBorrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -144,13 +155,13 @@ public class ProductoVerForm extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblTituloForm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrar2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(283, Short.MAX_VALUE))
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,15 +174,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
         int a = productosTable.getSelectedRow();
-        if(a < 0){
-            JOptionPane.showMessageDialog(null,"Debes seleccionar una fila");
-        }else {
-            int confirmar = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el registro?");
-            if(JOptionPane.OK_OPTION == confirmar){
-                model.removeRow(a);
-                JOptionPane.showMessageDialog(null, "Registro eliminado");
-            }
-        }
+        OperacionesRegistros.eliminar(model, a);
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnBorrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrarKeyReleased
@@ -180,27 +183,54 @@ public class ProductoVerForm extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBorrarKeyReleased
 
-    private void btnBorrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBorrar1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarProducto
+        ControladorMenu.nombreMenuNuevo = "btnEditarProducto";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario pasando el objeto del nuevo form (en este caso productoEditarForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoEditarForm, "editarProducto");
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnBorrar1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrar1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBorrar1KeyReleased
+    private void btnEditarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEditarKeyReleased
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarProducto
+        ControladorMenu.nombreMenuNuevo = "btnEditarProducto";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario pasando el objeto del nuevo form (en este caso productoNuevoForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoNuevoForm, "editarProducto");
+    }//GEN-LAST:event_btnEditarKeyReleased
 
-    private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBorrar2ActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoProducto
+        ControladorMenu.nombreMenuNuevo = "btnNuevoProducto";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoNuevoForm, "nuevoProducto");
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
-    private void btnBorrar2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrar2KeyReleased
+    private void btnNuevoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnNuevoKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBorrar2KeyReleased
+    }//GEN-LAST:event_btnNuevoKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrar;
-    private javax.swing.JButton btnBorrar1;
-    private javax.swing.JButton btnBorrar2;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloForm;
     private javax.swing.JTable productosTable;
@@ -220,18 +250,20 @@ public class ProductoVerForm extends javax.swing.JPanel {
 
                 // ejecuta la consulta y guarda el resultado en una variable tipo result set
                 ResultSet rs = st.executeQuery();
-                // si el result set tiene registros (nos logueamos correctamente)
+                // recorrer el result set con un while
                 while(rs.next()){
-                    //carga el id del producto en la variable id
-                    //String id = String.valueOf(rs.getInt("id_producto"));
-                    // carga el nombre del producto en la variable nombre
-                    //String nombre = rs.getString("nombre_producto");
-                    
+                    // hacemos un array String para recuperar los datos del result set
                     String datosTabla[] = {
+                        // para el caso del tipo de dato integer en la bd usamos rs.getInt y le convertimos a String
+                        // el parámetro del getInt debe ser el nombre exacto de la columna en la bd
                         String.valueOf(rs.getInt("id_producto")),
+                        // para el caso del tipo de dato varchar en la bd usamos rs.getString directo
+                        // el parámetro del getInt debe ser el nombre exacto de la columna en la bd
                         rs.getString("nombre_producto")
                     };
+                    // recuperamos el modelo del componente de la tabla
                     DefaultTableModel dt = (DefaultTableModel) productosTable.getModel();
+                    // agregamos la fila actual
                     dt.addRow(datosTabla);
                 }
             }catch(SQLException ex){
@@ -239,4 +271,6 @@ public class ProductoVerForm extends javax.swing.JPanel {
             }
         }
     }
+    
+    
 }
