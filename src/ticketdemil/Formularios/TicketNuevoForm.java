@@ -11,7 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
+import models.Productos;
 
 /**
  *
@@ -25,31 +27,7 @@ public class TicketNuevoForm extends javax.swing.JPanel {
     public TicketNuevoForm() {
         initComponents();
         ListarProductos();
-    }
-    
-    public void ListarProductos(){
-        Connection cn = DBConnection.conectarDB();
-        if(cn==null){
-            JOptionPane.showMessageDialog(null, "Error al conectar la BD");
-        }else{
-            try{
-                String sql = "select * from PRODUCTOS";
-                PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
-                ResultSet rs = st.executeQuery();
-                ArrayList<String> datos= new ArrayList<>(); 
-                while(rs.next()){
-                    String data=rs.getString("nombre_producto");
-                    datos.add(data);
-                }
-           
-                for(String dato : datos){
-                    cmProductos.addItem(dato);
-                }
-            }catch(SQLException ex){
-                JOptionPane.showMessageDialog(null, ex);
-            }
-        }
-    }
+    }  
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,7 +41,8 @@ public class TicketNuevoForm extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cmProductos = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         jLabel2.setText("Nombre del Producto:");
 
@@ -74,6 +53,10 @@ public class TicketNuevoForm extends javax.swing.JPanel {
                 cmProductosActionPerformed(evt);
             }
         });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,8 +70,8 @@ public class TicketNuevoForm extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,10 +81,10 @@ public class TicketNuevoForm extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(cmProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(185, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,6 +98,37 @@ public class TicketNuevoForm extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmProductos;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    private void ListarProductos() {
+        ArrayList datos = new ArrayList();
+        Productos p= null;
+        
+        Connection cn = DBConnection.conectarDB();
+        if(cn==null){
+            JOptionPane.showMessageDialog(null, "Error al conectar la BD");
+        }else{
+            try{
+                String sql = "select * from PRODUCTOS";
+                PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+                while(rs.next()){
+                        p = new Productos();
+                        p.setId_producto(rs.getInt("id_producto"));
+                        p.setNombre_producto(rs.getString("nombre_producto"));
+                        datos.add(p);
+                }
+                Iterator it=datos.iterator();
+                while(it.hasNext()){
+                    Productos pro = (Productos) it.next();
+                    cmProductos.addItem(pro.getNombre_producto());
+                }
+              
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }
  }
