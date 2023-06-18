@@ -4,15 +4,18 @@
  */
 package ticketdemil.Formularios;
 
+import global.ControladorMenu;
 import global.DBConnection;
 import global.PaletaColores;
 import jakarta.jms.Connection;
+import java.awt.CardLayout;
 import java.sql.ResultSet;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +23,11 @@ import javax.swing.table.DefaultTableModel;
  * @author antit
  */
 public class ClienteVerForm extends javax.swing.JPanel {
-
+    // en esta variable vamos a guardar el contenedor de los paneles
+    JPanel cardsPanel;
+    // se instancias los formularios a los que van a llevar los botones Nuevo y Editar
+    ClienteNuevoForm clienteNuevoForm = new ClienteNuevoForm();
+    ClienteEditarForm clienteEditarForm = new ClienteEditarForm();
     /**
      * Creates new form FrmVerClientes
      */
@@ -42,9 +49,9 @@ public class ClienteVerForm extends javax.swing.JPanel {
         lblVerClientes = new javax.swing.JLabel();
         ScrollVerClientes = new javax.swing.JScrollPane();
         tblVerClientes = new javax.swing.JTable();
-        btnBorrarCliente = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -66,19 +73,22 @@ public class ClienteVerForm extends javax.swing.JPanel {
         ));
         ScrollVerClientes.setViewportView(tblVerClientes);
 
-        btnBorrarCliente.setText("BORRAR");
+        btnBorrar.setBackground(java.awt.Color.red);
+        btnBorrar.setText("BORRAR");
 
-        jButton1.setText("EDITAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.setBackground(new java.awt.Color(102, 204, 255));
+        btnEditar.setText("EDITAR");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("NUEVO");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
+        btnNuevo.setText("NUEVO");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnNuevoActionPerformed(evt);
             }
         });
 
@@ -97,11 +107,11 @@ public class ClienteVerForm extends javax.swing.JPanel {
                         .addComponent(ScrollVerClientes))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(btnNuevo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBorrarCliente)))
+                        .addComponent(btnBorrar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -113,9 +123,9 @@ public class ClienteVerForm extends javax.swing.JPanel {
                 .addComponent(ScrollVerClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBorrarCliente)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnBorrar)
+                    .addComponent(btnEditar)
+                    .addComponent(btnNuevo))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -126,20 +136,38 @@ public class ClienteVerForm extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_formComponentShown
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarCliente
+        ControladorMenu.nombreMenuNuevo = "btnEditarCliente";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario pasando el objeto del nuevo form (en este caso productoEditarForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, clienteEditarForm, "editarProducto");
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoProducto
+        ControladorMenu.nombreMenuNuevo = "btnNuevoCliente";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del panel padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, clienteNuevoForm, "nuevoCliente");
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollVerClientes;
-    private javax.swing.JButton btnBorrarCliente;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel lblVerClientes;
     private javax.swing.JTable tblVerClientes;
     // End of variables declaration//GEN-END:variables
@@ -151,7 +179,10 @@ public class ClienteVerForm extends javax.swing.JPanel {
         }else{
             try{
                 // sentencia sql para buscar todos los clientes
-                String sql = "SELECT U.ID_USUARIO, U.USERNAME, U.NOMBRE + ' ' + U.APELLIDO AS NOMBRE, U.EMAIL, U.TELEFONO FROM CLIENTES CL INNER JOIN USUARIOS U ON CL.ID_USUARIO=U.ID_USUARIO";
+                String sql = "SELECT U.ID_USUARIO, U.USERNAME, U.NOMBRE + ' ' + U.APELLIDO AS NOMBRE,"
+                        + " U.EMAIL, U.TELEFONO "
+                        + "FROM CLIENTES CL "
+                        + "INNER JOIN USUARIOS U ON CL.ID_USUARIO=U.ID_USUARIO";
                 // prepara la sentencia sql para dar mayor seguridad a la aplicación
                 PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
                 
@@ -167,7 +198,10 @@ public class ClienteVerForm extends javax.swing.JPanel {
                     
                     String datosTabla[] = {
                         String.valueOf(rs.getInt("id_usuario")),
-                        rs.getString("username"), rs.getString("nombre"), rs.getString("email"), String.valueOf(rs.getInt("telefono"))
+                        rs.getString("username"),
+                        rs.getString("nombre"), 
+                        rs.getString("email"), 
+                        rs.getString("telefono")
                     };
                     DefaultTableModel dt = (DefaultTableModel) tblVerClientes.getModel();
                     dt.addRow(datosTabla);
