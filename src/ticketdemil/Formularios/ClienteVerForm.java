@@ -4,6 +4,17 @@
  */
 package ticketdemil.Formularios;
 
+import global.DBConnection;
+import global.PaletaColores;
+import jakarta.jms.Connection;
+import java.sql.ResultSet;
+import java.awt.Color;
+import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author antit
@@ -15,6 +26,8 @@ public class ClienteVerForm extends javax.swing.JPanel {
      */
     public ClienteVerForm() {
         initComponents();
+        this.setBackground(PaletaColores.peach);
+        lblVerClientes.setForeground(Color.RED);
     }
 
     /**
@@ -26,30 +39,143 @@ public class ClienteVerForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblVerClientes = new javax.swing.JLabel();
+        ScrollVerClientes = new javax.swing.JScrollPane();
+        tblVerClientes = new javax.swing.JTable();
+        btnBorrarCliente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
-        jLabel1.setText("Ver Clientes");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        lblVerClientes.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblVerClientes.setText("Ver Clientes");
+
+        tblVerClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblVerClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID_USUARIO", "USERNAME", "NOMBRE", "E-MAIL", "TELÉFONO"
+            }
+        ));
+        ScrollVerClientes.setViewportView(tblVerClientes);
+
+        btnBorrarCliente.setText("BORRAR");
+
+        jButton1.setText("EDITAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("NUEVO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(177, 177, 177))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(lblVerClientes)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ScrollVerClientes))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBorrarCliente)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel1)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblVerClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ScrollVerClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrarCliente)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        if(tblVerClientes.getRowCount() == 0){
+            cargarTabla();
+        }
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane ScrollVerClientes;
+    private javax.swing.JButton btnBorrarCliente;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel lblVerClientes;
+    private javax.swing.JTable tblVerClientes;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        java.sql.Connection cn = DBConnection.conectarDB();
+        if(cn == null){
+            JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
+        }else{
+            try{
+                // sentencia sql para buscar todos los clientes
+                String sql = "SELECT U.ID_USUARIO, U.USERNAME, U.NOMBRE + ' ' + U.APELLIDO AS NOMBRE, U.EMAIL, U.TELEFONO FROM CLIENTES CL INNER JOIN USUARIOS U ON CL.ID_USUARIO=U.ID_USUARIO";
+                // prepara la sentencia sql para dar mayor seguridad a la aplicación
+                PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
+                
+
+                // ejecuta la consulta y guarda el resultado en una variable tipo result set
+                ResultSet rs = st.executeQuery();
+                // si el result set tiene registros (nos logueamos correctamente)
+                while(rs.next()){
+                    //carga el id del cliente en la variable id
+                    //String id = String.valueOf(rs.getInt("id_producto"));
+                    // carga el nombre del producto en la variable nombre
+                    //String nombre = rs.getString("nombre_producto");
+                    
+                    String datosTabla[] = {
+                        String.valueOf(rs.getInt("id_usuario")),
+                        rs.getString("username"), rs.getString("nombre"), rs.getString("email"), String.valueOf(rs.getInt("telefono"))
+                    };
+                    DefaultTableModel dt = (DefaultTableModel) tblVerClientes.getModel();
+                    dt.addRow(datosTabla);
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(this,ex.getMessage());
+            }
+        }
+    }
+
 }

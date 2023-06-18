@@ -4,6 +4,9 @@
  */
 package ticketdemil.Formularios;
 
+import global.PaletaColores;
+import java.awt.Color;
+
 /**
  *
  * @author antit
@@ -15,6 +18,8 @@ public class ClienteEditarForm extends javax.swing.JPanel {
      */
     public ClienteEditarForm() {
         initComponents();
+        this.setBackground(PaletaColores.peach);
+        lblEditarCliente.setForeground(Color.red);
     }
 
     /**
@@ -26,30 +31,31 @@ public class ClienteEditarForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblEditarCliente = new javax.swing.JLabel();
 
-        jLabel1.setText("Editar Cliente");
+        lblEditarCliente.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblEditarCliente.setText("Editar Cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(jLabel1)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblEditarCliente)
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel1)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblEditarCliente)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblEditarCliente;
     // End of variables declaration//GEN-END:variables
 }
