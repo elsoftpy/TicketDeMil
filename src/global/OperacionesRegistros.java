@@ -15,12 +15,25 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OperacionesRegistros {
     
+    public static int idRegistroEditar;
+    
     public static void insertar(List<String> campos, String procedure)
     {
         DBStoreProcedures sp = new DBStoreProcedures(procedure);
         try{
             sp.ejecutarInsert(campos);
             JOptionPane.showMessageDialog(null, "Registro insertado");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public static void actualizar(List<String> campos, String procedure)
+    {
+        DBStoreProcedures sp = new DBStoreProcedures(procedure);
+        try{
+            sp.ejecutarUpdate(campos);
+            JOptionPane.showMessageDialog(null, "Registro actualizado");
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -47,6 +60,16 @@ public class OperacionesRegistros {
                 
             }
         }
+    }
+    
+    public void setIdRegistroEditar(int r)
+    {
+        idRegistroEditar = r;
+    }
+    
+    public int getIdRegistroEditar()
+    {
+        return idRegistroEditar;
     }
     
     

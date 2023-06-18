@@ -19,7 +19,6 @@ public class MenuForm extends javax.swing.JFrame {
 
     // variable para instanciar el panel que contiene el diseño de la aplicación
     CardLayout cardLayout;
-    JButton activeBtn;
     ProductoVerForm productoVerForm = new ProductoVerForm();
     ProductoNuevoForm productoNuevoForm = new ProductoNuevoForm();
     ProductoEditarForm productoEditarForm = new ProductoEditarForm();
@@ -72,8 +71,8 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoEmpleado = new javax.swing.JButton();
         menuEditarEmpleado = new javax.swing.JButton();
         lblMenuTicket = new javax.swing.JLabel();
-        menuNuevoTicket = new javax.swing.JButton();
         menuVerTicket = new javax.swing.JButton();
+        menuNuevoTicket = new javax.swing.JButton();
         menuEditarTicket = new javax.swing.JButton();
         CardsPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
@@ -277,24 +276,6 @@ public class MenuForm extends javax.swing.JFrame {
         lblMenuTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMenuTicket.setText("Ticket");
 
-        menuNuevoTicket.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
-        menuNuevoTicket.setForeground(new java.awt.Color(255, 255, 255));
-        menuNuevoTicket.setText("Nuevo ticket");
-        menuNuevoTicket.setBorder(null);
-        menuNuevoTicket.setBorderPainted(false);
-        menuNuevoTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuNuevoTicket.setFocusPainted(false);
-        menuNuevoTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuNuevoTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuNuevoTicket.setName("btnVerTicket"); // NOI18N
-        menuNuevoTicket.setPreferredSize(new java.awt.Dimension(0, 22));
-        menuNuevoTicket.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuNuevoTicketActionPerformed(evt);
-            }
-        });
-
         menuVerTicket.setBackground(new java.awt.Color(242, 135, 117));
         menuVerTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
         menuVerTicket.setForeground(new java.awt.Color(255, 255, 255));
@@ -305,11 +286,29 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerTicket.setFocusPainted(false);
         menuVerTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuVerTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuVerTicket.setName("btnNuevoTicket"); // NOI18N
+        menuVerTicket.setName("btnVerTicket"); // NOI18N
         menuVerTicket.setPreferredSize(new java.awt.Dimension(0, 22));
         menuVerTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuVerTicketActionPerformed(evt);
+            }
+        });
+
+        menuNuevoTicket.setBackground(new java.awt.Color(242, 135, 117));
+        menuNuevoTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        menuNuevoTicket.setForeground(new java.awt.Color(255, 255, 255));
+        menuNuevoTicket.setText("Nuevo ticket");
+        menuNuevoTicket.setBorder(null);
+        menuNuevoTicket.setBorderPainted(false);
+        menuNuevoTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuNuevoTicket.setFocusPainted(false);
+        menuNuevoTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuNuevoTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoTicket.setName("btnNuevoTicket"); // NOI18N
+        menuNuevoTicket.setPreferredSize(new java.awt.Dimension(0, 22));
+        menuNuevoTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoTicketActionPerformed(evt);
             }
         });
 
@@ -600,10 +599,5 @@ public class MenuForm extends javax.swing.JFrame {
     private javax.swing.JButton menuVerTicket;
     // End of variables declaration//GEN-END:variables
 
-//    private void cambiarBotonActivo(JButton currentBtn) {
-//        currentBtn.setBorderPainted(false);
-//        activeBtn.setBackground(PaletaColores.salmon);
-//        currentBtn.setBackground(Color.red);
-//        activeBtn = currentBtn;
-//    }
+
 }

@@ -184,6 +184,11 @@ public class ProductoVerForm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBorrarKeyReleased
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // obtener el id del registro a editar
+        //DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
+        int a = productosTable.getSelectedRow();
+        
+        OperacionesRegistros.idRegistroEditar = Integer.parseInt(productosTable.getValueAt(a, 0).toString()) ;
         // encuentra el Panel padre
         cardsPanel = (JPanel) btnNuevo.getParent().getParent();
         // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarProducto

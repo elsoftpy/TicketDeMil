@@ -35,7 +35,31 @@ public class DBStoreProcedures {
             int index = 1;
             cst.setString(index, nombreSP);
             for(String campo : campos){
-                index++;
+                cst.setString(index++, campo);
+            }
+            cst.execute();
+            cn.close();
+        }catch(SQLException ex){
+            throw new Exception(ex.getMessage());
+        }
+    }
+    
+    public void ejecutarUpdate(List<String> campos) throws Exception
+    {
+        CallableStatement cst;
+        try{
+            Connection cn;
+            cn = DBConnection.conectarDB();
+            //cst = cn.prepareCall("{call ?(?)}" );
+            StringBuilder builder = new StringBuilder();
+            for (String campo : campos) {
+                builder.append("?,");
+            }
+            String parametros = builder.deleteCharAt(builder.length() - 1).toString();
+            String sql = "{call "+ nombreSP +"("+parametros+")}";
+            cst = cn.prepareCall(sql) ;
+            int index = 1;
+            for(String campo : campos){
                 cst.setString(index++, campo);
             }
             cst.execute();
