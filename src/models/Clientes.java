@@ -15,7 +15,7 @@ public class Clientes {
     public static String id;
     public static String idUsuario;
     
-    public static List<String>getClientes()
+    public static List<String>getCliente()
     {
         List<String> cliente = new ArrayList<>();
         cliente.add(id);
