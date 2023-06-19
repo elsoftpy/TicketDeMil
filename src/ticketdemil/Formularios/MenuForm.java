@@ -37,7 +37,10 @@ public class MenuForm extends javax.swing.JFrame {
         // se instancia el panel principal
         cardLayout = (CardLayout) CardsPanel.getLayout();
         List<String> usuario = Usuarios.getUsuario();
+        lblUsuarioConectado.setText(usuario.get(1));
+        lblRol.setText("Empleado");
         if(usuario.get(6).equals("C")){
+            lblRol.setText("Empleado");
             lblMenuProducto.setVisible(false);
             lblMenuCliente.setVisible(false);
             lblMenuEmpleado.setVisible(false);
@@ -75,6 +78,11 @@ public class MenuForm extends javax.swing.JFrame {
         menuVerClientes = new javax.swing.JButton();
         menuNuevoCliente = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        lblUsuario = new javax.swing.JLabel();
+        lblUsuarioConectado = new javax.swing.JLabel();
+        lblRol = new javax.swing.JLabel();
+        lblUsuarioConectado1 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         CardsPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
 
@@ -169,8 +177,6 @@ public class MenuForm extends javax.swing.JFrame {
         menuNuevoProducto.setFocusPainted(false);
         menuNuevoProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         menuNuevoProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuNuevoProducto.setMaximumSize(new java.awt.Dimension(113, 22));
-        menuNuevoProducto.setMinimumSize(new java.awt.Dimension(113, 22));
         menuNuevoProducto.setName("btnNuevoProducto"); // NOI18N
         menuNuevoProducto.setPreferredSize(new java.awt.Dimension(0, 22));
         menuNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -261,41 +267,85 @@ public class MenuForm extends javax.swing.JFrame {
             }
         });
 
+        lblUsuario.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(204, 255, 0));
+        lblUsuario.setText("Usuario:");
+
+        lblUsuarioConectado.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblUsuarioConectado.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuarioConectado.setText("login");
+
+        lblRol.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
+        lblRol.setForeground(new java.awt.Color(204, 255, 0));
+        lblRol.setText("Rol:");
+
+        lblUsuarioConectado1.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblUsuarioConectado1.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuarioConectado1.setText("Cliente");
+
+        btnSalir.setBackground(java.awt.Color.red);
+        btnSalir.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
+        btnSalir.setOpaque(true);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        btnSalir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnSalirKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuPanelLayout = new javax.swing.GroupLayout(MenuPanel);
         MenuPanel.setLayout(MenuPanelLayout);
         MenuPanelLayout.setHorizontalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(6, 6, 6)
                         .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(menuVerClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(menuNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuNuevoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuVerTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MenuPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(menuVerClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(menuNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(menuVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(menuNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(menuNuevoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(menuVerTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblMenuTicket)
                             .addComponent(lblMenuProducto)
                             .addComponent(lblMenuCliente)
-                            .addComponent(lblMenuEmpleado))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(MenuPanelLayout.createSequentialGroup()
-                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMenuEmpleado)))
                     .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MenuPanelLayout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(MenuPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(MenuPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRol, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUsuarioConectado)
+                                    .addComponent(lblUsuarioConectado1)))
+                            .addGroup(MenuPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 2, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,7 +378,17 @@ public class MenuForm extends javax.swing.JFrame {
                 .addComponent(menuVerClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario)
+                    .addComponent(lblUsuarioConectado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRol)
+                    .addComponent(lblUsuarioConectado1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jSplitPane1.setLeftComponent(MenuPanel);
@@ -419,6 +479,14 @@ public class MenuForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuNuevoClienteActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnSalirKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSalirKeyReleased
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -457,6 +525,8 @@ public class MenuForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardsPanel;
     private javax.swing.JPanel MenuPanel;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JPanel homePanel;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
@@ -465,6 +535,10 @@ public class MenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblMenuEmpleado;
     private javax.swing.JLabel lblMenuProducto;
     private javax.swing.JLabel lblMenuTicket;
+    private javax.swing.JLabel lblRol;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblUsuarioConectado;
+    private javax.swing.JLabel lblUsuarioConectado1;
     private javax.swing.JButton menuNuevoCliente;
     private javax.swing.JButton menuNuevoEmpleado;
     private javax.swing.JButton menuNuevoProducto;

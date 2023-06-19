@@ -48,6 +48,7 @@ public class LoginForm extends javax.swing.JFrame {
         labelPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -119,9 +120,9 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        btnLogin.setBackground(new java.awt.Color(234, 228, 143));
-        btnLogin.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
-        btnLogin.setForeground(java.awt.Color.red);
+        btnLogin.setBackground(new java.awt.Color(153, 204, 0));
+        btnLogin.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Ingresar");
         btnLogin.setBorder(null);
         btnLogin.setNextFocusableComponent(txtUsuario);
@@ -133,6 +134,23 @@ public class LoginForm extends javax.swing.JFrame {
         btnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 btnLoginKeyReleased(evt);
+            }
+        });
+
+        btnSalir.setBackground(java.awt.Color.red);
+        btnSalir.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Salir");
+        btnSalir.setBorder(null);
+        btnSalir.setOpaque(true);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        btnSalir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnSalirKeyReleased(evt);
             }
         });
 
@@ -154,7 +172,10 @@ public class LoginForm extends javax.swing.JFrame {
                                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelUsuario)
                                     .addComponent(labelPassword))
-                                .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formsPanelLayout.createSequentialGroup()
+                                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         formsPanelLayout.setVerticalGroup(
@@ -170,9 +191,11 @@ public class LoginForm extends javax.swing.JFrame {
                 .addComponent(labelPassword)
                 .addGap(18, 18, 18)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(formsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
         );
 
         panelPrincipal.add(formsPanel);
@@ -223,9 +246,18 @@ public class LoginForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginKeyReleased
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnSalirKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSalirKeyReleased
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirKeyReleased
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JPanel formsPanel;
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelLogo;
