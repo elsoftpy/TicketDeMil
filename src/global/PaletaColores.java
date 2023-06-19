@@ -15,5 +15,6 @@ public class PaletaColores {
     public static final Color peach = new Color(247, 194, 137);
     public static final Color corn = new Color(234, 228, 143);
     public static final Color pale = new Color(249, 217, 192);
-    public static final Color linen = new Color(249, 246, 228);
+    //public static final Color linen = new Color(249, 246, 228);
+    public static final Color linen = new Color(0, 0, 0);
 }

@@ -53,6 +53,15 @@ public class TicketEditarForm extends javax.swing.JPanel {
         lblEstado.setForeground(PaletaColores.linen);
         chkHabilitar.setForeground(PaletaColores.linen);
         chkHabilitar.setBackground(PaletaColores.peach);
+        slDiasEstimados.setBackground(PaletaColores.peach);
+        slDiasEstimados.setForeground(PaletaColores.linen);
+        rbPendiente.setBackground(PaletaColores.peach);
+        rbAbierto.setBackground(PaletaColores.peach);
+        rbCerrado.setBackground(PaletaColores.peach);
+        rbPendiente.setForeground(PaletaColores.linen);
+        rbAbierto.setForeground(PaletaColores.linen);
+        rbCerrado.setForeground(PaletaColores.linen);
+        
 
     }
 
@@ -90,7 +99,7 @@ public class TicketEditarForm extends javax.swing.JPanel {
             }
         });
 
-        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         lblTituloForm.setText("Editar Ticket");
 
         btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
@@ -115,14 +124,17 @@ public class TicketEditarForm extends javax.swing.JPanel {
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(null);
 
+        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblNombre.setText("Nombre del Producto:");
 
+        lblDescripcion.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblDescripcion.setText("Descripción: ");
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
+        slDiasEstimados.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         slDiasEstimados.setMajorTickSpacing(1);
         slDiasEstimados.setMaximum(5);
         slDiasEstimados.setMinimum(1);
@@ -131,8 +143,12 @@ public class TicketEditarForm extends javax.swing.JPanel {
         slDiasEstimados.setValue(1);
         slDiasEstimados.setEnabled(false);
 
+        lblDias.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblDias.setText("Días Estimados");
 
+        txtNombreProducto.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+
+        chkHabilitar.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         chkHabilitar.setText("Habilitar Campos");
         chkHabilitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,21 +157,27 @@ public class TicketEditarForm extends javax.swing.JPanel {
         });
 
         Estados.add(rbPendiente);
+        rbPendiente.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         rbPendiente.setText("Pendiente");
         rbPendiente.setEnabled(false);
 
         Estados.add(rbAbierto);
+        rbAbierto.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         rbAbierto.setText("Abierto");
         rbAbierto.setEnabled(false);
 
         Estados.add(rbCerrado);
+        rbCerrado.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         rbCerrado.setText("Cerrado");
         rbCerrado.setEnabled(false);
 
+        lblEstado.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblEstado.setText("Estado");
 
+        lblPrioridad.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblPrioridad.setText("Prioridad");
 
+        spPrioridad.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         spPrioridad.setModel(new javax.swing.SpinnerListModel(new String[] {"Baja", "Media", "Alta"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -244,7 +266,7 @@ public class TicketEditarForm extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

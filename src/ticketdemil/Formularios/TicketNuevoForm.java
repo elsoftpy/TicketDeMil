@@ -37,6 +37,11 @@ public class TicketNuevoForm extends javax.swing.JPanel {
         ListarProductos();
         this.setBackground(PaletaColores.peach);
         lblTicket.setForeground(Color.red);
+        slDiasEstimados.setBackground(PaletaColores.peach);
+        lblNombre.setForeground(PaletaColores.linen);
+        lblDescripcion.setForeground(PaletaColores.linen);
+        lblPrioridad.setForeground(PaletaColores.linen);
+        lblDias.setForeground(PaletaColores.linen);
         List<String> usuario = Usuarios.getUsuario();
         if(usuario.get(6).equals("E")){
             btnGuardar.setEnabled(false);
@@ -55,22 +60,22 @@ public class TicketNuevoForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
         cmProductos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         spPrioridad = new javax.swing.JSpinner();
-        jLabel1 = new javax.swing.JLabel();
-        slDias_Estimados = new javax.swing.JSlider();
-        jLabel4 = new javax.swing.JLabel();
+        lblDias = new javax.swing.JLabel();
+        slDiasEstimados = new javax.swing.JSlider();
+        lblPrioridad = new javax.swing.JLabel();
         lblTicket = new javax.swing.JLabel();
 
-        jLabel2.setText("Nombre del Producto:");
+        lblNombre.setText("Nombre del Producto:");
 
-        jLabel3.setText("Descripción: ");
+        lblDescripcion.setText("Descripción: ");
 
         cmProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,17 +122,17 @@ public class TicketNuevoForm extends javax.swing.JPanel {
 
         spPrioridad.setModel(new javax.swing.SpinnerListModel(new String[] {"Baja", "Media", "Alta"}));
 
-        jLabel1.setText("Días Estimados");
+        lblDias.setText("Días Estimados");
 
-        slDias_Estimados.setMajorTickSpacing(1);
-        slDias_Estimados.setMaximum(5);
-        slDias_Estimados.setMinimum(1);
-        slDias_Estimados.setPaintLabels(true);
-        slDias_Estimados.setPaintTicks(true);
-        slDias_Estimados.setValue(1);
-        slDias_Estimados.setEnabled(false);
+        slDiasEstimados.setMajorTickSpacing(1);
+        slDiasEstimados.setMaximum(5);
+        slDiasEstimados.setMinimum(1);
+        slDiasEstimados.setPaintLabels(true);
+        slDiasEstimados.setPaintTicks(true);
+        slDiasEstimados.setValue(1);
+        slDiasEstimados.setEnabled(false);
 
-        jLabel4.setText("Prioridad");
+        lblPrioridad.setText("Prioridad");
 
         lblTicket.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
         lblTicket.setText("Insertar Ticket");
@@ -142,8 +147,8 @@ public class TicketNuevoForm extends javax.swing.JPanel {
                     .addComponent(lblTicket)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(lblNombre)
+                            .addComponent(lblDescripcion))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,9 +159,9 @@ public class TicketNuevoForm extends javax.swing.JPanel {
                                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)
-                            .addComponent(slDias_Estimados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
+                            .addComponent(lblDias)
+                            .addComponent(slDiasEstimados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPrioridad)
                             .addComponent(spPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(95, Short.MAX_VALUE))
         );
@@ -169,18 +174,18 @@ public class TicketNuevoForm extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                            .addComponent(lblNombre)
                             .addComponent(cmProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(lblDescripcion)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblDias)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(slDias_Estimados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(slDiasEstimados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel4)
+                        .addComponent(lblPrioridad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(spPrioridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(61, 61, 61)
@@ -217,13 +222,13 @@ public class TicketNuevoForm extends javax.swing.JPanel {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<Productos> cmProductos;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblDias;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPrioridad;
     private javax.swing.JLabel lblTicket;
-    private javax.swing.JSlider slDias_Estimados;
+    private javax.swing.JSlider slDiasEstimados;
     private javax.swing.JSpinner spPrioridad;
     private javax.swing.JTextArea txtDescripcion;
     // End of variables declaration//GEN-END:variables

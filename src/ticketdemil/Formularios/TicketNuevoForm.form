@@ -22,8 +22,8 @@
                   <Component id="lblTicket" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDescripcion" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -37,9 +37,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnCancelar" min="-2" pref="105" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="slDias_Estimados" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDias" min="-2" max="-2" attributes="0"/>
+                          <Component id="slDiasEstimados" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPrioridad" min="-2" max="-2" attributes="0"/>
                           <Component id="spPrioridad" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -57,21 +57,21 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmProductos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDescripcion" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDias" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="slDias_Estimados" min="-2" max="-2" attributes="0"/>
+                      <Component id="slDiasEstimados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPrioridad" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="spPrioridad" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -87,12 +87,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblNombre">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre del Producto:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblDescripcion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Descripci&#xf3;n: "/>
       </Properties>
@@ -179,12 +179,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblDias">
       <Properties>
         <Property name="text" type="java.lang.String" value="D&#xed;as Estimados"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSlider" name="slDias_Estimados">
+    <Component class="javax.swing.JSlider" name="slDiasEstimados">
       <Properties>
         <Property name="majorTickSpacing" type="int" value="1"/>
         <Property name="maximum" type="int" value="5"/>
@@ -195,7 +195,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblPrioridad">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prioridad"/>
       </Properties>
