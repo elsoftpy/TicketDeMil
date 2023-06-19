@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -62,7 +64,7 @@ public class TicketVerForm extends javax.swing.JPanel {
         });
 
         lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
-        lblTituloForm.setText("LISTADO DE TICKETS");
+        lblTituloForm.setText("Listado de Tickets");
 
         ticketsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,19 +128,22 @@ public class TicketVerForm extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(lblTituloForm))
-                .addGap(96, 96, 96))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblTituloForm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 549, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -146,21 +151,19 @@ public class TicketVerForm extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(lblTituloForm)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-      
-        cargarTabla();            
-        
+        cargarTabla();                    
     }//GEN-LAST:event_formComponentShown
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -200,6 +203,9 @@ public class TicketVerForm extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
+        
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        
         Connection cn = DBConnection.conectarDB();
         DefaultTableModel dt = (DefaultTableModel) ticketsTable.getModel();
         dt.setRowCount(0);
@@ -234,17 +240,50 @@ public class TicketVerForm extends javax.swing.JPanel {
                     // carga el nombre del producto en la variable nombre
                     //String nombre = rs.getString("nombre_producto");
                     
+                    Date fecha;
+                    String fechaEmision = "";
+                    String fechaInicio = "";
+                    String fechaFin = "";
+                    fecha = rs.getDate("fecha_emision");
+                    if(!(fecha == null)){
+                        fechaEmision = df.format(fecha);
+                    }
+                    
+                    fecha = rs.getDate("fecha_inicio");
+                    if(!(fecha == null)){
+                        fechaInicio = df.format(fecha);
+                    }
+                    
+                    fecha = rs.getDate("fecha_fin");
+                    if(!(fecha == null)){
+                        fechaFin = df.format(fecha);
+                    }
+                    
+                    String estado;
+                    estado = switch (rs.getString("estado")) {
+                        case "C" -> "Cerrado";
+                        case "A" -> "Abierto";
+                        default -> "Pendiente";
+                    };
+                         
+                    String prioridad;
+                    prioridad = switch(rs.getString("prioridad")){
+                        case "A" -> "Alta";
+                        case "M" -> "Media";
+                        default -> "Baja";
+                    };
+                    
                     String datosTabla[] = {
                         String.valueOf(rs.getInt("id_ticket")),
                         rs.getString("nombreapellido"),
                         rs.getString("descripcion"),
-                        String.valueOf(rs.getDate("fecha_emision")),
-                        String.valueOf(rs.getDate("fecha_inicio")),
-                        String.valueOf(rs.getDate("fecha_fin")),
-                        rs.getString("estado"),
+                        fechaEmision,
+                        fechaInicio,
+                        fechaFin,
+                        estado,
                         rs.getString("producto"),
                         String.valueOf(rs.getInt("dias_estimado")),
-                        rs.getString("prioridad"),
+                        prioridad,
                     };
                     
                     dt.addRow(datosTabla);

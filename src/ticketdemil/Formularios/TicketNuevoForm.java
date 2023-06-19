@@ -37,6 +37,13 @@ public class TicketNuevoForm extends javax.swing.JPanel {
         ListarProductos();
         this.setBackground(PaletaColores.peach);
         lblTicket.setForeground(Color.red);
+        List<String> usuario = Usuarios.getUsuario();
+        if(usuario.get(6).equals("E")){
+            btnGuardar.setEnabled(false);
+            txtDescripcion.setEnabled(false);
+            spPrioridad.setEnabled(false);
+            cmProductos.setEnabled(false);
+        }
     }  
     
     /**
@@ -108,7 +115,7 @@ public class TicketNuevoForm extends javax.swing.JPanel {
             }
         });
 
-        spPrioridad.setModel(new javax.swing.SpinnerListModel(new String[] {"B", "M", "A"}));
+        spPrioridad.setModel(new javax.swing.SpinnerListModel(new String[] {"Baja", "Media", "Alta"}));
 
         jLabel1.setText("Días Estimados");
 
@@ -190,8 +197,6 @@ public class TicketNuevoForm extends javax.swing.JPanel {
     }//GEN-LAST:event_cmProductosActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // AGREGAR VALIDACIONES
-
         guardarRegistro();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -257,13 +262,13 @@ public class TicketNuevoForm extends javax.swing.JPanel {
         List<String> campos = new ArrayList<>();
         List<String> usuario= Usuarios.getUsuario();
         String id_usuario = usuario.get(0);
+        String prioridad = setPrioridad();
         // asignar campo por campo los valores a la lista
         campos.add(id_usuario);
-        Productos producto = new Productos();
-        producto = (Productos) cmProductos.getSelectedItem();
+        Productos producto = (Productos) cmProductos.getSelectedItem();
         campos.add(String.valueOf( producto.getId_producto()));
         campos.add(txtDescripcion.getText());
-        campos.add(String.valueOf(spPrioridad.getValue()) );
+        campos.add(prioridad);
         // insertar el registro
         OperacionesRegistros.insertar(campos, "sp_insertar_ticket");
         // limpiar campos
@@ -282,5 +287,19 @@ public class TicketNuevoForm extends javax.swing.JPanel {
         CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
         // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
         ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, ticketVerForm, "verTicket");
+    }
+
+    private String setPrioridad() {
+        String prioridad = String.valueOf(spPrioridad.getValue());
+        if(prioridad.equals("Baja")){
+            return "B";
+        }
+        
+        if(prioridad.equals("Media")){
+            return "M";
+        }
+        
+        return "A";
+        
     }
  }

@@ -172,9 +172,9 @@
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel type="list">
-            <ListItem value="B"/>
-            <ListItem value="M"/>
-            <ListItem value="A"/>
+            <ListItem value="Baja"/>
+            <ListItem value="Media"/>
+            <ListItem value="Alta"/>
           </SpinnerModel>
         </Property>
       </Properties>

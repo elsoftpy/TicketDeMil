@@ -5,21 +5,14 @@
 package ticketdemil.Formularios;
 
 import global.ControladorMenu;
-import global.DBConnection;
 import global.OperacionesRegistros;
 import global.PaletaColores;
-import jakarta.jms.Connection;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

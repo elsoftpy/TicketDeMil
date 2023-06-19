@@ -38,9 +38,9 @@ public class MenuForm extends javax.swing.JFrame {
         cardLayout = (CardLayout) CardsPanel.getLayout();
         List<String> usuario = Usuarios.getUsuario();
         lblUsuarioConectado.setText(usuario.get(1));
-        lblRol.setText("Empleado");
+        lblRolUsuario.setText("Empleado");
         if(usuario.get(6).equals("C")){
-            lblRol.setText("Empleado");
+            lblRolUsuario.setText("Cliente");
             lblMenuProducto.setVisible(false);
             lblMenuCliente.setVisible(false);
             lblMenuEmpleado.setVisible(false);
@@ -81,7 +81,7 @@ public class MenuForm extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblUsuarioConectado = new javax.swing.JLabel();
         lblRol = new javax.swing.JLabel();
-        lblUsuarioConectado1 = new javax.swing.JLabel();
+        lblRolUsuario = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         CardsPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
@@ -279,9 +279,9 @@ public class MenuForm extends javax.swing.JFrame {
         lblRol.setForeground(new java.awt.Color(204, 255, 0));
         lblRol.setText("Rol:");
 
-        lblUsuarioConectado1.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
-        lblUsuarioConectado1.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuarioConectado1.setText("Cliente");
+        lblRolUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblRolUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblRolUsuario.setText("Cliente");
 
         btnSalir.setBackground(java.awt.Color.red);
         btnSalir.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -341,7 +341,7 @@ public class MenuForm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblUsuarioConectado)
-                                    .addComponent(lblUsuarioConectado1)))
+                                    .addComponent(lblRolUsuario)))
                             .addGroup(MenuPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -386,7 +386,7 @@ public class MenuForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRol)
-                    .addComponent(lblUsuarioConectado1))
+                    .addComponent(lblRolUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -526,7 +526,6 @@ public class MenuForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardsPanel;
     private javax.swing.JPanel MenuPanel;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel homePanel;
     private javax.swing.JSeparator jSeparator1;
@@ -537,9 +536,9 @@ public class MenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblMenuProducto;
     private javax.swing.JLabel lblMenuTicket;
     private javax.swing.JLabel lblRol;
+    private javax.swing.JLabel lblRolUsuario;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblUsuarioConectado;
-    private javax.swing.JLabel lblUsuarioConectado1;
     private javax.swing.JButton menuNuevoCliente;
     private javax.swing.JButton menuNuevoEmpleado;
     private javax.swing.JButton menuNuevoProducto;
