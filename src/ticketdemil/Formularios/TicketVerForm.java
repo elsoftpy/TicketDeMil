@@ -10,6 +10,7 @@ import global.OperacionesRegistros;
 import global.PaletaColores;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +24,10 @@ import javax.swing.table.DefaultTableModel;
  * @author antit
  */
 public class TicketVerForm extends javax.swing.JPanel {
+    JPanel cardsPanel;
+    
+    TicketNuevoForm ticketNuevoForm = new TicketNuevoForm();
+    TicketEditarForm ticketEditarForm = new TicketEditarForm();
 
     /**
      * Creates new form frmVerTickets
@@ -45,6 +50,9 @@ public class TicketVerForm extends javax.swing.JPanel {
         lblTituloForm = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ticketsTable = new javax.swing.JTable();
+        btnNuevo = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 255, 255));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -66,6 +74,54 @@ public class TicketVerForm extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(ticketsTable);
 
+        btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
+        btnNuevo.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.setBorder(null);
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        btnNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnNuevoKeyReleased(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(102, 204, 255));
+        btnEditar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.setBorder(null);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        btnEditar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnEditarKeyReleased(evt);
+            }
+        });
+
+        btnBorrar.setBackground(java.awt.Color.red);
+        btnBorrar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("Borrar");
+        btnBorrar.setBorder(null);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+        btnBorrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnBorrarKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,6 +132,14 @@ public class TicketVerForm extends javax.swing.JPanel {
                     .addComponent(jScrollPane1)
                     .addComponent(lblTituloForm))
                 .addGap(96, 96, 96))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,8 +147,13 @@ public class TicketVerForm extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(lblTituloForm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -94,8 +163,37 @@ public class TicketVerForm extends javax.swing.JPanel {
         
     }//GEN-LAST:event_formComponentShown
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        nuevoRegistro();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnNuevoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnNuevoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoKeyReleased
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        editarRegistro();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEditarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEditarKeyReleased
+        editarRegistro();
+    }//GEN-LAST:event_btnEditarKeyReleased
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        borrarRegistro();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnBorrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrarKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            borrarRegistro();
+        }
+    }//GEN-LAST:event_btnBorrarKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTituloForm;
     private javax.swing.JTable ticketsTable;
@@ -155,6 +253,51 @@ public class TicketVerForm extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this,ex.getMessage());
             }
         }
+    }
+    
+    private void borrarRegistro() {
+        DefaultTableModel model = (DefaultTableModel) ticketsTable.getModel();
+        int a = ticketsTable.getSelectedRow();
+        OperacionesRegistros.eliminar(model, a, "sp_borrar_ticket");
+    }
+
+    private void editarRegistro() {
+        // obtener el id del registro a editar
+        //DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
+        int a = ticketsTable.getSelectedRow();
+        if(a < 0)
+        {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Debe seleccionar un registro",
+                    "Chake",
+                    JOptionPane.WARNING_MESSAGE);
+        }else{
+            OperacionesRegistros.idRegistroEditar = Integer.parseInt(ticketsTable.getValueAt(a, 0).toString()) ;
+            // encuentra el Panel padre
+            cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+            // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarProducto
+            ControladorMenu.nombreMenuNuevo = "btnEditarTicket";
+            // cambiar de color el botón activo
+            ControladorMenu.cambiarBotonActivo(cardsPanel);
+            // trae el layout del pnael padre
+            CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+            // cambia el formulario pasando el objeto del nuevo form (en este caso productoEditarForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
+            ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, ticketEditarForm, "editarTicket");
+        }
+    }
+
+    private void nuevoRegistro() {
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoProducto
+        ControladorMenu.nombreMenuNuevo = "btnNuevoTicket";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, ticketNuevoForm, "nuevoTicket");
     }
     
 }

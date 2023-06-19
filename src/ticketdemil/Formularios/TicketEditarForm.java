@@ -4,6 +4,19 @@
  */
 package ticketdemil.Formularios;
 
+import global.ControladorMenu;
+import global.DBConnection;
+import global.OperacionesRegistros;
+import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author antit
@@ -26,30 +39,239 @@ public class TicketEditarForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTituloForm = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
+        slDiasEstimados = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
+        txtNombreProducto = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
-        jLabel1.setText("Editar Ticket");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setText("Editar Ticket");
+
+        btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
+        btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        btnGuardar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnGuardarKeyReleased(evt);
+            }
+        });
+
+        btnCancelar.setBackground(java.awt.Color.red);
+        btnCancelar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+
+        jLabel2.setText("Nombre del Producto:");
+
+        jLabel3.setText("Descripción: ");
+
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        jScrollPane1.setViewportView(txtDescripcion);
+
+        slDiasEstimados.setMajorTickSpacing(1);
+        slDiasEstimados.setMaximum(5);
+        slDiasEstimados.setMinimum(1);
+        slDiasEstimados.setPaintLabels(true);
+        slDiasEstimados.setPaintTicks(true);
+        slDiasEstimados.setValue(1);
+        slDiasEstimados.setEnabled(false);
+
+        jLabel1.setText("Días Estimados");
+
+        jCheckBox1.setText("Habilitar Días");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jLabel1)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(lblTituloForm)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(slDiasEstimados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox1)
+                                    .addComponent(jLabel1))
+                                .addGap(110, 110, 110)))
+                        .addGap(43, 43, 43))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jLabel1)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblTituloForm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jCheckBox1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(4, 4, 4)
+                        .addComponent(slDiasEstimados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+            guardarRegistro();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnGuardarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnGuardarKeyReleased
+        // TODO add your handling code here
+            guardarRegistro();
+    }//GEN-LAST:event_btnGuardarKeyReleased
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        slDiasEstimados.setEnabled(true);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {                                    
+        cargarRegistro();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTituloForm;
+    private javax.swing.JSlider slDiasEstimados;
+    private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtNombreProducto;
     // End of variables declaration//GEN-END:variables
+
+    private void guardarRegistro() {
+    //crea una lista para los campos a insertar
+        List<String> campos = new ArrayList<>();
+        // asignar campo por campo los valores a la lista
+        campos.add(String.valueOf(OperacionesRegistros.idRegistroEditar));
+        campos.add(txtDescripcion.getText());
+        campos.add(String.valueOf(slDiasEstimados.getValue()));
+        // insertar el registro
+        OperacionesRegistros.actualizar(campos, "sp_actualizar_ticket");
+        // limpiar campos
+        txtNombreProducto.setText("");
+        OperacionesRegistros.idRegistroEditar = 0;
+        // se instancia los formularios a los que van a llevar los botones Nuevo y Editar
+        ProductoVerForm productoVerForm = new ProductoVerForm();
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnGuardar.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoProducto
+        ControladorMenu.nombreMenuNuevo = "btnVerProducto";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoVerForm, "verProducto");
+    }
+    private void cargarRegistro() {
+        
+        Connection cn = DBConnection.conectarDB();
+        if(cn == null){
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No hay conexión a la BD",
+                    "Demonios",
+                    JOptionPane.ERROR_MESSAGE);
+        }else{
+            try{
+                int id = OperacionesRegistros.idRegistroEditar;
+                // sentencia sql para buscar todos los productos
+                String sql = "select t.*,p.NOMBRE_PRODUCTO from TICKETS t \n" +
+                             "inner join PRODUCTOS p on t.ID_PRODUCTO=p.ID_PRODUCTO\n" +
+                             "where t.ID_PRODUCTO= ?";
+                
+                
+                // prepara la sentencia sql para dar mayor seguridad a la aplicación
+                PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
+                st.setInt(1, id);
+
+                // ejecuta la consulta y guarda el resultado en una variable tipo result set
+                ResultSet rs = st.executeQuery();
+                // recorrer el result set con un while
+                if(rs.next()){
+                    // asignamos los valores al campo correspondiente
+                    txtNombreProducto.setText(rs.getString("nombre_producto"));
+                    txtDescripcion.setText(rs.getString("descripcion"));
+                }else{
+                    JOptionPane.showMessageDialog(
+                        this,
+                        "Registro no encontrado",
+                        "Demonios",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(
+                        this,
+                        ex.getMessage(),
+                        "Demonios",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 }
