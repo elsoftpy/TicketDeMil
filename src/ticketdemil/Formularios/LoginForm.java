@@ -266,7 +266,8 @@ public class LoginForm extends javax.swing.JFrame {
                             rs.getString("nombre"), 
                             rs.getString("apellido"), 
                             rs.getString("email"),
-                            rs.getString("telefono"));
+                            rs.getString("telefono"),
+                            rs.getString("rol"));
                     // instancia el formualrio del menu
                     MenuForm menuForm = new MenuForm();
                     // muestra el formualrio del menu

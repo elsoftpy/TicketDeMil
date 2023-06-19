@@ -22,9 +22,17 @@ public class OperacionesRegistros {
         DBStoreProcedures sp = new DBStoreProcedures(procedure);
         try{
             sp.ejecutarInsert(campos);
-            JOptionPane.showMessageDialog(null, "Registro insertado");
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Registro insertado",
+                    "Purete",
+                    JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(
+                    null,
+                    ex.getMessage(),
+                    "Demonios",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -33,18 +41,34 @@ public class OperacionesRegistros {
         DBStoreProcedures sp = new DBStoreProcedures(procedure);
         try{
             sp.ejecutarUpdate(campos);
-            JOptionPane.showMessageDialog(null, "Registro actualizado");
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Registro actualizado",
+                    "Purete",
+                    JOptionPane.INFORMATION_MESSAGE);
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(
+                    null,
+                    ex.getMessage(),
+                    "Demonios",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
     
     public static void eliminar(DefaultTableModel model, int a, String procedure)
     {
         if(a < 0){
-            JOptionPane.showMessageDialog(null,"Debes seleccionar una fila");
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Debe seleccionar un registro",
+                    "Chake",
+                    JOptionPane.WARNING_MESSAGE);
         }else {
-            int confirmar = JOptionPane.showConfirmDialog(null, "Está seguro de eliminar el registro?");
+            int confirmar = JOptionPane.showConfirmDialog(
+                    null,
+                    "Está seguro de eliminar el registro?", 
+                    "Novaseo", 
+                    JOptionPane.YES_NO_OPTION);
             if(JOptionPane.OK_OPTION == confirmar){
                 DBStoreProcedures sp = new DBStoreProcedures(procedure);
                 try{
@@ -52,7 +76,11 @@ public class OperacionesRegistros {
                         //boolean resultado = sp.ejecutarDelete(Integer.parseInt(productosTable.getValueAt(a, 0).toString()));
                     sp.ejecutarDelete(Integer.parseInt(model.getValueAt(a, 0).toString()));
                     model.removeRow(a);
-                    JOptionPane.showMessageDialog(null, "Registro eliminado");
+                    JOptionPane.showMessageDialog(
+                            null, 
+                            "Registro eliminado",
+                            "Purete",
+                            JOptionPane.INFORMATION_MESSAGE);
                     //}
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage());

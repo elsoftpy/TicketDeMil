@@ -4,17 +4,39 @@
  */
 package ticketdemil.Formularios;
 
+import global.ControladorMenu;
+import global.DBConnection;
+import global.OperacionesRegistros;
+import global.PaletaColores;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author antit
  */
 public class EmpleadoVerForm extends javax.swing.JPanel {
 
+    // en esta variable vamos a guardar el contenedor de los paneles
+    JPanel cardsPanel;
+    // se instancias los formularios a los que van a llevar los botones Nuevo y Editar
+    EmpleadoNuevoForm empleadoNuevoForm = new EmpleadoNuevoForm();
+    EmpleadoEditarForm empleadoEditarForm = new EmpleadoEditarForm();
     /**
      * Creates new form EmpleadoVerForm
      */
     public EmpleadoVerForm() {
         initComponents();
+        this.setBackground(PaletaColores.peach);
+        lblTituloForm.setForeground(Color.red);
     }
 
     /**
@@ -26,30 +48,249 @@ public class EmpleadoVerForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblTituloForm = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        empleadosTable = new javax.swing.JTable();
+        btnNuevo = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
 
-        jLabel1.setText("Ver Empleado");
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
+
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setForeground(new java.awt.Color(234, 228, 143));
+        lblTituloForm.setText("Listado de Empleados");
+
+        empleadosTable.setFont(new java.awt.Font("Nirmala UI", 0, 12)); // NOI18N
+        empleadosTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "USUARIO", "NOMBRE", "APELLIDO", "EMAIL", "TELEFONO"
+            }
+        ));
+        empleadosTable.setOpaque(false);
+        jScrollPane1.setViewportView(empleadosTable);
+
+        btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
+        btnNuevo.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.setBorder(null);
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        btnNuevo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnNuevoKeyReleased(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(102, 204, 255));
+        btnEditar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.setBorder(null);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        btnEditar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnEditarKeyReleased(evt);
+            }
+        });
+
+        btnBorrar.setBackground(java.awt.Color.red);
+        btnBorrar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("Borrar");
+        btnBorrar.setBorder(null);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+        btnBorrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnBorrarKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel1)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(lblTituloForm)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jLabel1)
-                .addContainerGap(168, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTituloForm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        nuevoRegistro();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnNuevoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnNuevoKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            nuevoRegistro();
+        }
+    }//GEN-LAST:event_btnNuevoKeyReleased
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        editarRegistro();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnEditarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEditarKeyReleased
+        editarRegistro();
+    }//GEN-LAST:event_btnEditarKeyReleased
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        borrarRegistro();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnBorrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrarKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            borrarRegistro();
+        }
+    }//GEN-LAST:event_btnBorrarKeyReleased
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        cargarTabla();
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JTable empleadosTable;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTituloForm;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarTabla() {
+        // recuperamos el modelo del componente de la tabla
+        DefaultTableModel dt = (DefaultTableModel) empleadosTable.getModel();
+        dt.setRowCount(0);
+        Connection cn = DBConnection.conectarDB();
+        if(cn == null){
+            JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
+        }else{
+            try{
+                // sentencia sql para buscar todos los productos
+                String sql = "SELECT u.id_usuario, u.username, u.nombre, u.apellido, u.email, u.telefono "
+                        + "FROM empleados e "
+                        + "INNER JOIN usuarios u "
+                        + "ON e.id_usuario = u.id_usuario";
+                // prepara la sentencia sql para dar mayor seguridad a la aplicación
+                PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
+                
+
+                // ejecuta la consulta y guarda el resultado en una variable tipo result set
+                ResultSet rs = st.executeQuery();
+                // recorrer el result set con un while
+                while(rs.next()){
+                    // hacemos un array String para recuperar los datos del result set
+                    String datosTabla[] = {
+                        // para el caso del tipo de dato integer en la bd usamos rs.getInt y le convertimos a String
+                        // el parámetro del getInt debe ser el nombre exacto de la columna en la bd
+                        String.valueOf(rs.getInt("id_usuario")),
+                        // para el caso del tipo de dato varchar en la bd usamos rs.getString directo
+                        // el parámetro del getInt debe ser el nombre exacto de la columna en la bd
+                        rs.getString("username"),
+                        rs.getString("nombre"),
+                        rs.getString("apellido"),
+                        rs.getString("email"),
+                        rs.getString("telefono")
+                    };
+                    
+                    // agregamos la fila actual
+                    dt.addRow(datosTabla);
+                }
+            }catch(SQLException ex){
+                JOptionPane.showMessageDialog(this,ex.getMessage());
+            }
+        }
+    }
+
+    private void editarRegistro() {
+        // obtener el id del registro a editar
+        //DefaultTableModel model = (DefaultTableModel) empleadosTable.getModel();
+        int a = empleadosTable.getSelectedRow();
+        if(a < 0)
+        {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Debe seleccionar un registro",
+                    "Chake",
+                    JOptionPane.WARNING_MESSAGE);
+        }else{
+            OperacionesRegistros.idRegistroEditar = Integer.parseInt(empleadosTable.getValueAt(a, 0).toString()) ;
+            // encuentra el Panel padre
+            cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+            // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarEmpleado
+            ControladorMenu.nombreMenuNuevo = "btnEditarEmpleado";
+            // cambiar de color el botón activo
+            ControladorMenu.cambiarBotonActivo(cardsPanel);
+            // trae el layout del pnael padre
+            CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+            // cambia el formulario pasando el objeto del nuevo form (en este caso empleadoEditarForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarEmpleado
+            ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, empleadoEditarForm, "editarEmpleado");
+        }
+    }
+
+    private void borrarRegistro() {
+        DefaultTableModel model = (DefaultTableModel) empleadosTable.getModel();
+        int a = empleadosTable.getSelectedRow();
+        OperacionesRegistros.eliminar(model, a, "sp_borrar_empleado");
+    }
+
+    private void nuevoRegistro() {
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoEmpleado
+        ControladorMenu.nombreMenuNuevo = "btnNuevoEmpleado";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoEmpleado
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, empleadoNuevoForm, "nuevoEmpleado");
+    }
 }

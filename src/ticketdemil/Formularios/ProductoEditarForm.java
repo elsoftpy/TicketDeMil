@@ -149,11 +149,11 @@ public class ProductoEditarForm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGuardarKeyReleased
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        txtNombre.setText("");
+        limpiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnCancelarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCancelarKeyReleased
-        txtNombre.setText("");
+        limpiarCampos();
     }//GEN-LAST:event_btnCancelarKeyReleased
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -164,7 +164,11 @@ public class ProductoEditarForm extends javax.swing.JPanel {
         
         Connection cn = DBConnection.conectarDB();
         if(cn == null){
-            JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No hay conexión a la BD",
+                    "Demonios",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             try{
                 int id = OperacionesRegistros.idRegistroEditar;
@@ -182,10 +186,18 @@ public class ProductoEditarForm extends javax.swing.JPanel {
                     // asignamos los valores al campo correspondiente
                     txtNombre.setText(rs.getString("nombre_producto"));
                 }else{
-                    JOptionPane.showMessageDialog(this,"Registro no encontrado");
+                    JOptionPane.showMessageDialog(
+                        this,
+                        "Registro no encontrado",
+                        "Demonios",
+                        JOptionPane.ERROR_MESSAGE);
                 }
             }catch(SQLException ex){
-                JOptionPane.showMessageDialog(this,ex.getMessage());
+                JOptionPane.showMessageDialog(
+                        this,
+                        ex.getMessage(),
+                        "Demonios",
+                        JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -222,4 +234,8 @@ public class ProductoEditarForm extends javax.swing.JPanel {
     private javax.swing.JLabel lblTituloForm;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+        txtNombre.setText("");
+    }
 }

@@ -4,17 +4,41 @@
  */
 package ticketdemil.Formularios;
 
+import global.ControladorMenu;
+import global.OperacionesRegistros;
+import global.PaletaColores;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JPanel;
+
 /**
  *
  * @author antit
  */
 public class EmpleadoNuevoForm extends javax.swing.JPanel {
 
+    // en esta variable vamos a guardar el contenedor de los paneles
+    JPanel cardsPanel;
     /**
      * Creates new form EmpleadoNuevoTicket
      */
     public EmpleadoNuevoForm() {
         initComponents();
+        this.setBackground(PaletaColores.peach);
+        lblTituloForm.setForeground(Color.red);
+        lblNombreUsuario.setForeground(PaletaColores.linen);
+        lblNombre.setForeground(PaletaColores.linen);
+        lblApellido.setForeground(PaletaColores.linen);
+        lblEmail.setForeground(PaletaColores.linen);
+        lblTelefono.setForeground(PaletaColores.linen);
+        rbEmpleado.setBackground(PaletaColores.peach);
+        rbCliente.setBackground(PaletaColores.peach);
+        rbEmpleado.setForeground(PaletaColores.linen);
+        rbCliente.setForeground(PaletaColores.linen);
+        rbEmpleado.setSelected(true);
     }
 
     /**
@@ -26,30 +50,246 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btngrpRol = new javax.swing.ButtonGroup();
+        lblNombreUsuario = new javax.swing.JLabel();
+        txtNombreUsuario = new javax.swing.JTextField();
+        lblTituloForm = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        lblApellido = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblTelefono = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        rbEmpleado = new javax.swing.JRadioButton();
+        rbCliente = new javax.swing.JRadioButton();
 
-        jLabel1.setText("Nuevo Empleado");
+        lblNombreUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblNombreUsuario.setText("Nombre de usuario");
+
+        txtNombreUsuario.setBorder(null);
+
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setText("Insertar Empleado");
+
+        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblNombre.setText("Nombre");
+
+        txtNombre.setBorder(null);
+
+        lblApellido.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblApellido.setText("Apellido");
+
+        txtApellido.setBorder(null);
+
+        lblEmail.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblEmail.setText("Email");
+
+        txtEmail.setBorder(null);
+
+        lblTelefono.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblTelefono.setText("Teléfono");
+
+        txtTelefono.setBorder(null);
+
+        btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
+        btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        btnGuardar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnGuardarKeyReleased(evt);
+            }
+        });
+
+        btnCancelar.setBackground(java.awt.Color.red);
+        btnCancelar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.setOpaque(true);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        btnCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnCancelarKeyReleased(evt);
+            }
+        });
+
+        btngrpRol.add(rbEmpleado);
+        rbEmpleado.setText("Empleado");
+
+        btngrpRol.add(rbCliente);
+        rbCliente.setText("Cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jLabel1)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbEmpleado)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbCliente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblNombre)
+                                    .addComponent(lblEmail)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblApellido)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTelefono)
+                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblTituloForm)
+                            .addComponent(lblNombreUsuario)
+                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 10, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jLabel1)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblTituloForm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNombreUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblApellido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTelefono)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbEmpleado)
+                    .addComponent(rbCliente))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // AGREGAR VALIDACIONES
+
+        guardarRegistro();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnGuardarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnGuardarKeyReleased
+        guardarRegistro();
+    }//GEN-LAST:event_btnGuardarKeyReleased
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCancelarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCancelarKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_btnCancelarKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.ButtonGroup btngrpRol;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreUsuario;
+    private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblTituloForm;
+    private javax.swing.JRadioButton rbCliente;
+    private javax.swing.JRadioButton rbEmpleado;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreUsuario;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+
+    private void guardarRegistro() {
+        String rol;
+        if(rbEmpleado.isSelected()){
+            rol = "E";
+        }else{
+            rol = "C";
+        }
+        //crea una lista para los campos a insertar
+        List<String> campos = new ArrayList<>();
+        // asignar campo por campo los valores a la lista
+        campos.add(txtNombreUsuario.getText());
+        campos.add(txtNombre.getText());
+        campos.add(txtApellido.getText());
+        campos.add(txtEmail.getText());
+        campos.add(txtTelefono.getText());
+        campos.add(rol);
+        // insertar el registro
+        OperacionesRegistros.insertar(campos, "sp_insertar_empleado");
+        // limpiar campos
+        limpiarCampos();
+        // se instancia los formularios a los que van a llevar los botones Nuevo y Editar
+        EmpleadoVerForm productoVerForm = new EmpleadoVerForm();
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnGuardar.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoEmpleado
+        ControladorMenu.nombreMenuNuevo = "btnVerEmpleado";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoEmpleado
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoVerForm, "verEmpleado");
+    }
+
+    private void limpiarCampos() {
+        txtNombreUsuario.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEmail.setText("");
+        txtTelefono.setText("");
+    }
 }

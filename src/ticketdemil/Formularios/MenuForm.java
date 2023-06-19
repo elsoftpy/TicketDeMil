@@ -5,11 +5,9 @@
 package ticketdemil.Formularios;
 
 import global.ControladorMenu;
-import global.PaletaColores;
 import java.awt.CardLayout;
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.SwingUtilities;
+import java.util.List;
+import models.Usuarios;
 
 /**
  *
@@ -21,16 +19,12 @@ public class MenuForm extends javax.swing.JFrame {
     CardLayout cardLayout;
     ProductoVerForm productoVerForm = new ProductoVerForm();
     ProductoNuevoForm productoNuevoForm = new ProductoNuevoForm();
-    ProductoEditarForm productoEditarForm = new ProductoEditarForm();
     ClienteVerForm clienteVerForm = new ClienteVerForm();
     ClienteNuevoForm clienteNuevoForm = new ClienteNuevoForm();
-    ClienteEditarForm clienteEditarForm = new ClienteEditarForm();
     EmpleadoVerForm empleadoVerForm = new EmpleadoVerForm();
     EmpleadoNuevoForm empleadoNuevoForm = new EmpleadoNuevoForm();
-    EmpleadoEditarForm empleadoEditarForm = new EmpleadoEditarForm();
     TicketVerForm ticketVerForm = new TicketVerForm();
     TicketNuevoForm ticketNuevoForm = new TicketNuevoForm();
-    TicketEditarForm ticketEditarForm = new TicketEditarForm();
     
     
     
@@ -42,7 +36,18 @@ public class MenuForm extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         // se instancia el panel principal
         cardLayout = (CardLayout) CardsPanel.getLayout();
-        //activeBtn = (JButton) menuVerProductos;
+        List<String> usuario = Usuarios.getUsuario();
+        if(usuario.get(6).equals("C")){
+            lblMenuProducto.setVisible(false);
+            lblMenuCliente.setVisible(false);
+            lblMenuEmpleado.setVisible(false);
+            menuVerProductos.setVisible(false);
+            menuNuevoProducto.setVisible(false);
+            menuVerClientes.setVisible(false);
+            menuNuevoCliente.setVisible(false);
+            menuVerEmpleados.setVisible(false);
+            menuNuevoEmpleado.setVisible(false);
+        }
     }
 
     /**
@@ -57,19 +62,19 @@ public class MenuForm extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         MenuPanel = new javax.swing.JPanel();
         lblLogoMenu = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        lblMenuTicket = new javax.swing.JLabel();
+        menuVerTickets = new javax.swing.JButton();
+        menuNuevoTicket = new javax.swing.JButton();
         lblMenuProducto = new javax.swing.JLabel();
         menuVerProductos = new javax.swing.JButton();
-        menuNuevoProductos = new javax.swing.JButton();
-        lblMenuCliente = new javax.swing.JLabel();
-        menuVerCliente = new javax.swing.JButton();
-        menuNuevoCliente = new javax.swing.JButton();
+        menuNuevoProducto = new javax.swing.JButton();
         lblMenuEmpleado = new javax.swing.JLabel();
-        menuVerEmpleado = new javax.swing.JButton();
+        menuVerEmpleados = new javax.swing.JButton();
         menuNuevoEmpleado = new javax.swing.JButton();
-        lblMenuTicket = new javax.swing.JLabel();
-        menuVerTicket = new javax.swing.JButton();
-        menuNuevoTicket = new javax.swing.JButton();
+        lblMenuCliente = new javax.swing.JLabel();
+        menuVerClientes = new javax.swing.JButton();
+        menuNuevoCliente = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         CardsPanel = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
 
@@ -87,6 +92,47 @@ public class MenuForm extends javax.swing.JFrame {
         lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pedazo de logo 100px.png"))); // NOI18N
         lblLogoMenu.setMinimumSize(new java.awt.Dimension(180, 142));
         lblLogoMenu.setPreferredSize(new java.awt.Dimension(180, 142));
+
+        lblMenuTicket.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        lblMenuTicket.setForeground(new java.awt.Color(204, 255, 0));
+        lblMenuTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMenuTicket.setText("Ticket");
+
+        menuVerTickets.setBackground(new java.awt.Color(242, 135, 117));
+        menuVerTickets.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        menuVerTickets.setForeground(new java.awt.Color(255, 255, 255));
+        menuVerTickets.setText("Ver tickets");
+        menuVerTickets.setBorder(null);
+        menuVerTickets.setBorderPainted(false);
+        menuVerTickets.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuVerTickets.setFocusPainted(false);
+        menuVerTickets.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuVerTickets.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerTickets.setName("btnVerTicket"); // NOI18N
+        menuVerTickets.setPreferredSize(new java.awt.Dimension(0, 22));
+        menuVerTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVerTicketsActionPerformed(evt);
+            }
+        });
+
+        menuNuevoTicket.setBackground(new java.awt.Color(242, 135, 117));
+        menuNuevoTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        menuNuevoTicket.setForeground(new java.awt.Color(255, 255, 255));
+        menuNuevoTicket.setText("Nuevo ticket");
+        menuNuevoTicket.setBorder(null);
+        menuNuevoTicket.setBorderPainted(false);
+        menuNuevoTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuNuevoTicket.setFocusPainted(false);
+        menuNuevoTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuNuevoTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoTicket.setName("btnNuevoTicket"); // NOI18N
+        menuNuevoTicket.setPreferredSize(new java.awt.Dimension(0, 22));
+        menuNuevoTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuNuevoTicketActionPerformed(evt);
+            }
+        });
 
         lblMenuProducto.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
         lblMenuProducto.setForeground(new java.awt.Color(204, 255, 0));
@@ -113,62 +159,23 @@ public class MenuForm extends javax.swing.JFrame {
             }
         });
 
-        menuNuevoProductos.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoProductos.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
-        menuNuevoProductos.setForeground(new java.awt.Color(255, 255, 255));
-        menuNuevoProductos.setText("Nuevo producto");
-        menuNuevoProductos.setBorder(null);
-        menuNuevoProductos.setBorderPainted(false);
-        menuNuevoProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuNuevoProductos.setFocusPainted(false);
-        menuNuevoProductos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuNuevoProductos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuNuevoProductos.setName("btnNuevoProducto"); // NOI18N
-        menuNuevoProductos.setPreferredSize(new java.awt.Dimension(0, 22));
-        menuNuevoProductos.addActionListener(new java.awt.event.ActionListener() {
+        menuNuevoProducto.setBackground(new java.awt.Color(242, 135, 117));
+        menuNuevoProducto.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        menuNuevoProducto.setForeground(new java.awt.Color(255, 255, 255));
+        menuNuevoProducto.setText("Nuevo producto");
+        menuNuevoProducto.setBorder(null);
+        menuNuevoProducto.setBorderPainted(false);
+        menuNuevoProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuNuevoProducto.setFocusPainted(false);
+        menuNuevoProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuNuevoProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoProducto.setMaximumSize(new java.awt.Dimension(113, 22));
+        menuNuevoProducto.setMinimumSize(new java.awt.Dimension(113, 22));
+        menuNuevoProducto.setName("btnNuevoProducto"); // NOI18N
+        menuNuevoProducto.setPreferredSize(new java.awt.Dimension(0, 22));
+        menuNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuNuevoProductosActionPerformed(evt);
-            }
-        });
-
-        lblMenuCliente.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
-        lblMenuCliente.setForeground(new java.awt.Color(204, 255, 0));
-        lblMenuCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMenuCliente.setText("Cliente");
-
-        menuVerCliente.setBackground(new java.awt.Color(242, 135, 117));
-        menuVerCliente.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
-        menuVerCliente.setForeground(new java.awt.Color(255, 255, 255));
-        menuVerCliente.setText("Ver clientes");
-        menuVerCliente.setBorder(null);
-        menuVerCliente.setBorderPainted(false);
-        menuVerCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuVerCliente.setFocusPainted(false);
-        menuVerCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuVerCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuVerCliente.setName("btnVerCliente"); // NOI18N
-        menuVerCliente.setPreferredSize(new java.awt.Dimension(0, 22));
-        menuVerCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuVerClienteActionPerformed(evt);
-            }
-        });
-
-        menuNuevoCliente.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoCliente.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
-        menuNuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
-        menuNuevoCliente.setText("Nuevo cliente");
-        menuNuevoCliente.setBorder(null);
-        menuNuevoCliente.setBorderPainted(false);
-        menuNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuNuevoCliente.setFocusPainted(false);
-        menuNuevoCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuNuevoCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuNuevoCliente.setName("btnNuevoCliente"); // NOI18N
-        menuNuevoCliente.setPreferredSize(new java.awt.Dimension(0, 22));
-        menuNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuNuevoClienteActionPerformed(evt);
+                menuNuevoProductoActionPerformed(evt);
             }
         });
 
@@ -177,21 +184,21 @@ public class MenuForm extends javax.swing.JFrame {
         lblMenuEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMenuEmpleado.setText("Empleado");
 
-        menuVerEmpleado.setBackground(new java.awt.Color(242, 135, 117));
-        menuVerEmpleado.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
-        menuVerEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        menuVerEmpleado.setText("Ver empleados");
-        menuVerEmpleado.setBorder(null);
-        menuVerEmpleado.setBorderPainted(false);
-        menuVerEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuVerEmpleado.setFocusPainted(false);
-        menuVerEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuVerEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuVerEmpleado.setName("btnVerEmpleado"); // NOI18N
-        menuVerEmpleado.setPreferredSize(new java.awt.Dimension(0, 22));
-        menuVerEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        menuVerEmpleados.setBackground(new java.awt.Color(242, 135, 117));
+        menuVerEmpleados.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        menuVerEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        menuVerEmpleados.setText("Ver empleados");
+        menuVerEmpleados.setBorder(null);
+        menuVerEmpleados.setBorderPainted(false);
+        menuVerEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuVerEmpleados.setFocusPainted(false);
+        menuVerEmpleados.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuVerEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerEmpleados.setName("btnVerEmpleado"); // NOI18N
+        menuVerEmpleados.setPreferredSize(new java.awt.Dimension(0, 22));
+        menuVerEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuVerEmpleadoActionPerformed(evt);
+                menuVerEmpleadosActionPerformed(evt);
             }
         });
 
@@ -213,44 +220,44 @@ public class MenuForm extends javax.swing.JFrame {
             }
         });
 
-        lblMenuTicket.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
-        lblMenuTicket.setForeground(new java.awt.Color(204, 255, 0));
-        lblMenuTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMenuTicket.setText("Ticket");
+        lblMenuCliente.setFont(new java.awt.Font("Nirmala UI", 0, 24)); // NOI18N
+        lblMenuCliente.setForeground(new java.awt.Color(204, 255, 0));
+        lblMenuCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMenuCliente.setText("Cliente");
 
-        menuVerTicket.setBackground(new java.awt.Color(242, 135, 117));
-        menuVerTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
-        menuVerTicket.setForeground(new java.awt.Color(255, 255, 255));
-        menuVerTicket.setText("Ver ticket");
-        menuVerTicket.setBorder(null);
-        menuVerTicket.setBorderPainted(false);
-        menuVerTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuVerTicket.setFocusPainted(false);
-        menuVerTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuVerTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuVerTicket.setName("btnVerTicket"); // NOI18N
-        menuVerTicket.setPreferredSize(new java.awt.Dimension(0, 22));
-        menuVerTicket.addActionListener(new java.awt.event.ActionListener() {
+        menuVerClientes.setBackground(new java.awt.Color(242, 135, 117));
+        menuVerClientes.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        menuVerClientes.setForeground(new java.awt.Color(255, 255, 255));
+        menuVerClientes.setText("Ver clientes");
+        menuVerClientes.setBorder(null);
+        menuVerClientes.setBorderPainted(false);
+        menuVerClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuVerClientes.setFocusPainted(false);
+        menuVerClientes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuVerClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVerClientes.setName("btnVerCliente"); // NOI18N
+        menuVerClientes.setPreferredSize(new java.awt.Dimension(0, 22));
+        menuVerClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuVerTicketActionPerformed(evt);
+                menuVerClientesActionPerformed(evt);
             }
         });
 
-        menuNuevoTicket.setBackground(new java.awt.Color(242, 135, 117));
-        menuNuevoTicket.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
-        menuNuevoTicket.setForeground(new java.awt.Color(255, 255, 255));
-        menuNuevoTicket.setText("Nuevo ticket");
-        menuNuevoTicket.setBorder(null);
-        menuNuevoTicket.setBorderPainted(false);
-        menuNuevoTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuNuevoTicket.setFocusPainted(false);
-        menuNuevoTicket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        menuNuevoTicket.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        menuNuevoTicket.setName("btnNuevoTicket"); // NOI18N
-        menuNuevoTicket.setPreferredSize(new java.awt.Dimension(0, 22));
-        menuNuevoTicket.addActionListener(new java.awt.event.ActionListener() {
+        menuNuevoCliente.setBackground(new java.awt.Color(242, 135, 117));
+        menuNuevoCliente.setFont(new java.awt.Font("Nirmala UI", 0, 16)); // NOI18N
+        menuNuevoCliente.setForeground(new java.awt.Color(255, 255, 255));
+        menuNuevoCliente.setText("Nuevo cliente");
+        menuNuevoCliente.setBorder(null);
+        menuNuevoCliente.setBorderPainted(false);
+        menuNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuNuevoCliente.setFocusPainted(false);
+        menuNuevoCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        menuNuevoCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuNuevoCliente.setName("btnNuevoCliente"); // NOI18N
+        menuNuevoCliente.setPreferredSize(new java.awt.Dimension(0, 22));
+        menuNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuNuevoTicketActionPerformed(evt);
+                menuNuevoClienteActionPerformed(evt);
             }
         });
 
@@ -259,83 +266,69 @@ public class MenuForm extends javax.swing.JFrame {
         MenuPanelLayout.setHorizontalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(menuVerClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(menuNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuNuevoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuVerTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(MenuPanelLayout.createSequentialGroup()
+                        .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMenuTicket)
+                            .addComponent(lblMenuProducto)
+                            .addComponent(lblMenuCliente)
+                            .addComponent(lblMenuEmpleado))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(MenuPanelLayout.createSequentialGroup()
                 .addGroup(MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MenuPanelLayout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblMenuProducto))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuNuevoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblMenuCliente))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuVerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblMenuEmpleado))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuVerEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblMenuTicket))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuVerTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MenuPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(menuNuevoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6))
+                        .addContainerGap()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         MenuPanelLayout.setVerticalGroup(
             MenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuPanelLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(lblLogoMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(lblMenuProducto)
-                .addGap(6, 6, 6)
-                .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(menuNuevoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(lblMenuCliente)
-                .addGap(6, 6, 6)
-                .addComponent(menuVerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(menuNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(lblMenuEmpleado)
-                .addGap(6, 6, 6)
-                .addComponent(menuVerEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(2, 2, 2)
                 .addComponent(lblMenuTicket)
-                .addGap(6, 6, 6)
-                .addComponent(menuVerTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuVerTickets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(menuNuevoTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(184, 184, 184))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMenuProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuVerProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMenuEmpleado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuVerEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuNuevoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMenuCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuVerClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuNuevoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(272, 272, 272))
         );
 
         jSplitPane1.setLeftComponent(MenuPanel);
@@ -351,11 +344,11 @@ public class MenuForm extends javax.swing.JFrame {
         homePanel.setLayout(homePanelLayout);
         homePanelLayout.setHorizontalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 608, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         homePanelLayout.setVerticalGroup(
             homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         CardsPanel.add(homePanel, "card2");
@@ -376,35 +369,42 @@ public class MenuForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void menuNuevoTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoTicketActionPerformed
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, ticketNuevoForm, "nuevoTicket");
+        ControladorMenu.nombreMenuNuevo = "btnNuevoTicket";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
+    }//GEN-LAST:event_menuNuevoTicketActionPerformed
+
+    private void menuVerTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerTicketsActionPerformed
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, ticketVerForm, "verTicket");
+        ControladorMenu.nombreMenuNuevo = "btnVerTicket";
+        ControladorMenu.cambiarBotonActivo(CardsPanel);
+    }//GEN-LAST:event_menuVerTicketsActionPerformed
+
     private void menuVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerProductosActionPerformed
         ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, productoVerForm, "verProducto");
         ControladorMenu.nombreMenuNuevo = "btnVerProducto";
         ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuVerProductosActionPerformed
 
-    private void menuNuevoProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoProductosActionPerformed
+    private void menuNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoProductoActionPerformed
         ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, productoNuevoForm, "nuevoProducto");
         ControladorMenu.nombreMenuNuevo = "btnNuevoProducto";
         ControladorMenu.cambiarBotonActivo(CardsPanel);
-    }//GEN-LAST:event_menuNuevoProductosActionPerformed
+    }//GEN-LAST:event_menuNuevoProductoActionPerformed
 
-    private void menuVerClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerClienteActionPerformed
+    private void menuVerClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerClientesActionPerformed
         ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, clienteVerForm, "verCliente");
         ControladorMenu.nombreMenuNuevo = "btnVerCliente";
         ControladorMenu.cambiarBotonActivo(CardsPanel);
-    }//GEN-LAST:event_menuVerClienteActionPerformed
 
-    private void menuNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoClienteActionPerformed
-        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, clienteNuevoForm, "nuevoCliente");
-        ControladorMenu.nombreMenuNuevo = "btnNuevoCliente";
-        ControladorMenu.cambiarBotonActivo(CardsPanel);
-    }//GEN-LAST:event_menuNuevoClienteActionPerformed
+    }//GEN-LAST:event_menuVerClientesActionPerformed
 
-    private void menuVerEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerEmpleadoActionPerformed
+    private void menuVerEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerEmpleadosActionPerformed
         ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, empleadoVerForm, "verEmpleado");
         ControladorMenu.nombreMenuNuevo = "btnVerEmpleado";
         ControladorMenu.cambiarBotonActivo(CardsPanel);
-    }//GEN-LAST:event_menuVerEmpleadoActionPerformed
+    }//GEN-LAST:event_menuVerEmpleadosActionPerformed
 
     private void menuNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoEmpleadoActionPerformed
         ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, empleadoNuevoForm, "nuevoEmpleado");
@@ -412,17 +412,12 @@ public class MenuForm extends javax.swing.JFrame {
         ControladorMenu.cambiarBotonActivo(CardsPanel);
     }//GEN-LAST:event_menuNuevoEmpleadoActionPerformed
 
-    private void menuNuevoTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoTicketActionPerformed
-        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, ticketNuevoForm, "nuevoTicket");
-        ControladorMenu.nombreMenuNuevo = "btnNuevoTicket";
+    private void menuNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNuevoClienteActionPerformed
+        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, clienteNuevoForm, "nuevoCliente");
+        ControladorMenu.nombreMenuNuevo = "btnNuevoCliente";
         ControladorMenu.cambiarBotonActivo(CardsPanel);
-    }//GEN-LAST:event_menuNuevoTicketActionPerformed
 
-    private void menuVerTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVerTicketActionPerformed
-        ControladorMenu.cambiarFormulario(cardLayout, CardsPanel, ticketVerForm, "verTicket");
-        ControladorMenu.nombreMenuNuevo = "btnVerTicket";
-        ControladorMenu.cambiarBotonActivo(CardsPanel);
-    }//GEN-LAST:event_menuVerTicketActionPerformed
+    }//GEN-LAST:event_menuNuevoClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -472,12 +467,12 @@ public class MenuForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblMenuTicket;
     private javax.swing.JButton menuNuevoCliente;
     private javax.swing.JButton menuNuevoEmpleado;
-    private javax.swing.JButton menuNuevoProductos;
+    private javax.swing.JButton menuNuevoProducto;
     private javax.swing.JButton menuNuevoTicket;
-    private javax.swing.JButton menuVerCliente;
-    private javax.swing.JButton menuVerEmpleado;
+    private javax.swing.JButton menuVerClientes;
+    private javax.swing.JButton menuVerEmpleados;
     private javax.swing.JButton menuVerProductos;
-    private javax.swing.JButton menuVerTicket;
+    private javax.swing.JButton menuVerTickets;
     // End of variables declaration//GEN-END:variables
 
 

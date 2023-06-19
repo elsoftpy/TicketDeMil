@@ -6,7 +6,6 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -19,6 +18,7 @@ public class Usuarios {
     public static String apellido;
     public static String email;
     public static String telefono;
+    public static String rol;
     
     public static List<String>getUsuario()
     {
@@ -29,11 +29,12 @@ public class Usuarios {
         usuario.add(apellido);
         usuario.add(email);
         usuario.add(telefono);
+        usuario.add(rol);
         
         return usuario;
     }
     
-    public static void setUsuario(String idUsuario, String name, String nombreUsuario, String apellidoUsuario, String emailUsuario, String telefonoUsuario)
+    public static void setUsuario(String idUsuario, String name, String nombreUsuario, String apellidoUsuario, String emailUsuario, String telefonoUsuario, String rolUsuario)
     {
         id = idUsuario;
         username = name;
@@ -41,6 +42,7 @@ public class Usuarios {
         apellido = apellidoUsuario;
         email = emailUsuario;
         telefono = telefonoUsuario;
+        rol = rolUsuario;
     }
     
     @Override

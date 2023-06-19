@@ -15,11 +15,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import models.Usuarios;
 
 /**
  *
@@ -40,7 +38,6 @@ public class ProductoVerForm extends javax.swing.JPanel {
         initComponents();
         this.setBackground(PaletaColores.peach);
         lblTituloForm.setForeground(Color.red);
-        //activeBtn = (JButton) MenuForm.
     }
 
     /**
@@ -168,65 +165,29 @@ public class ProductoVerForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-            cargarTabla();
-            List<String> usuario = Usuarios.getUsuario();
-            JOptionPane.showMessageDialog(null, usuario.get(0));
+        cargarTabla();
     }//GEN-LAST:event_formComponentShown
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
-        int a = productosTable.getSelectedRow();
-        OperacionesRegistros.eliminar(model, a, "sp_borrar_producto");
+        borrarRegistro();
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnBorrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBorrarKeyReleased
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-           // doLogin();
+            borrarRegistro();
         }
     }//GEN-LAST:event_btnBorrarKeyReleased
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // obtener el id del registro a editar
-        //DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
-        int a = productosTable.getSelectedRow();
-        
-        OperacionesRegistros.idRegistroEditar = Integer.parseInt(productosTable.getValueAt(a, 0).toString()) ;
-        // encuentra el Panel padre
-        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
-        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarProducto
-        ControladorMenu.nombreMenuNuevo = "btnEditarProducto";
-        // cambiar de color el botón activo
-        ControladorMenu.cambiarBotonActivo(cardsPanel);
-        // trae el layout del pnael padre
-        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
-        // cambia el formulario pasando el objeto del nuevo form (en este caso productoEditarForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
-        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoEditarForm, "editarProducto");
+        editarRegistro();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEditarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEditarKeyReleased
-        // encuentra el Panel padre
-        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
-        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarProducto
-        ControladorMenu.nombreMenuNuevo = "btnEditarProducto";
-        // cambiar de color el botón activo
-        ControladorMenu.cambiarBotonActivo(cardsPanel);
-        // trae el layout del pnael padre
-        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
-        // cambia el formulario pasando el objeto del nuevo form (en este caso productoNuevoForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
-        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoNuevoForm, "editarProducto");
+       editarRegistro();
     }//GEN-LAST:event_btnEditarKeyReleased
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // encuentra el Panel padre
-        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
-        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoProducto
-        ControladorMenu.nombreMenuNuevo = "btnNuevoProducto";
-        // cambiar de color el botón activo
-        ControladorMenu.cambiarBotonActivo(cardsPanel);
-        // trae el layout del pnael padre
-        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
-        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
-        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoNuevoForm, "nuevoProducto");
+        nuevoRegistro();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnNuevoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnNuevoKeyReleased
@@ -249,7 +210,11 @@ public class ProductoVerForm extends javax.swing.JPanel {
         dt.setRowCount(0);
         Connection cn = DBConnection.conectarDB();
         if(cn == null){
-            JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No hay conexión a la BD", 
+                    "Demonios",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             try{
                 // sentencia sql para buscar todos los productos
@@ -280,6 +245,49 @@ public class ProductoVerForm extends javax.swing.JPanel {
             }
         }
     }
-    
-    
+
+    private void borrarRegistro() {
+        DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
+        int a = productosTable.getSelectedRow();
+        OperacionesRegistros.eliminar(model, a, "sp_borrar_producto");
+    }
+
+    private void editarRegistro() {
+        // obtener el id del registro a editar
+        //DefaultTableModel model = (DefaultTableModel) productosTable.getModel();
+        int a = productosTable.getSelectedRow();
+        if(a < 0)
+        {
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Debe seleccionar un registro",
+                    "Chake",
+                    JOptionPane.WARNING_MESSAGE);
+        }else{
+            OperacionesRegistros.idRegistroEditar = Integer.parseInt(productosTable.getValueAt(a, 0).toString()) ;
+            // encuentra el Panel padre
+            cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+            // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarProducto
+            ControladorMenu.nombreMenuNuevo = "btnEditarProducto";
+            // cambiar de color el botón activo
+            ControladorMenu.cambiarBotonActivo(cardsPanel);
+            // trae el layout del pnael padre
+            CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+            // cambia el formulario pasando el objeto del nuevo form (en este caso productoEditarForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
+            ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoEditarForm, "editarProducto");
+        }
+    }
+
+    private void nuevoRegistro() {
+        // encuentra el Panel padre
+        cardsPanel = (JPanel) btnNuevo.getParent().getParent();
+        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoProducto
+        ControladorMenu.nombreMenuNuevo = "btnNuevoProducto";
+        // cambiar de color el botón activo
+        ControladorMenu.cambiarBotonActivo(cardsPanel);
+        // trae el layout del pnael padre
+        CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
+        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoNuevoForm, "nuevoProducto");
+    }
 }

@@ -137,11 +137,11 @@ public class ProductoNuevoForm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGuardarKeyReleased
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        txtNombre.setText("");
+        limpiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnCancelarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCancelarKeyReleased
-        txtNombre.setText("");
+        limpiarCampos();
     }//GEN-LAST:event_btnCancelarKeyReleased
 
 
@@ -174,5 +174,9 @@ public class ProductoNuevoForm extends javax.swing.JPanel {
         CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
         // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
         ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, productoVerForm, "verProducto");
+    }
+
+    private void limpiarCampos() {
+        txtNombre.setText("");
     }
 }
