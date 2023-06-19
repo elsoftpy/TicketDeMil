@@ -6,6 +6,7 @@ package ticketdemil.Formularios;
 
 import global.ControladorMenu;
 import global.DBConnection;
+import global.OperacionesRegistros;
 import global.PaletaColores;
 import jakarta.jms.Connection;
 import java.awt.CardLayout;
@@ -75,6 +76,11 @@ public class ClienteVerForm extends javax.swing.JPanel {
 
         btnBorrar.setBackground(java.awt.Color.red);
         btnBorrar.setText("BORRAR");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setBackground(new java.awt.Color(102, 204, 255));
         btnEditar.setText("EDITAR");
@@ -137,6 +143,10 @@ public class ClienteVerForm extends javax.swing.JPanel {
     }//GEN-LAST:event_formComponentShown
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int a = tblVerClientes.getSelectedRow();
+        
+        OperacionesRegistros.idRegistroEditar = Integer.parseInt(tblVerClientes.getValueAt(a, 0).toString());
+
         // encuentra el Panel padre
         cardsPanel = (JPanel) btnNuevo.getParent().getParent();
         // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarCliente
@@ -146,7 +156,7 @@ public class ClienteVerForm extends javax.swing.JPanel {
         // trae el layout del pnael padre
         CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
         // cambia el formulario pasando el objeto del nuevo form (en este caso productoEditarForm) y pasa un nuevo nombre para poder identificarlo, en este caso editarProducto
-        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, clienteEditarForm, "editarProducto");
+        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, clienteEditarForm, "editarCliente");
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -161,6 +171,12 @@ public class ClienteVerForm extends javax.swing.JPanel {
         // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
         ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, clienteNuevoForm, "nuevoCliente");
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblVerClientes.getModel();
+        int a = tblVerClientes.getSelectedRow();
+        OperacionesRegistros.eliminar(model, a, "sp_borrar_cliente");
+    }//GEN-LAST:event_btnBorrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
