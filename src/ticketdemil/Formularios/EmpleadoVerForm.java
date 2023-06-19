@@ -61,11 +61,11 @@ public class EmpleadoVerForm extends javax.swing.JPanel {
             }
         });
 
-        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         lblTituloForm.setForeground(new java.awt.Color(234, 228, 143));
         lblTituloForm.setText("Listado de Empleados");
 
-        empleadosTable.setFont(new java.awt.Font("Nirmala UI", 0, 12)); // NOI18N
+        empleadosTable.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         empleadosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -75,6 +75,7 @@ public class EmpleadoVerForm extends javax.swing.JPanel {
             }
         ));
         empleadosTable.setOpaque(false);
+        empleadosTable.setRowHeight(30);
         jScrollPane1.setViewportView(empleadosTable);
 
         btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
@@ -152,7 +153,7 @@ public class EmpleadoVerForm extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblTituloForm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -34,11 +34,7 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
         lblApellido.setForeground(PaletaColores.linen);
         lblEmail.setForeground(PaletaColores.linen);
         lblTelefono.setForeground(PaletaColores.linen);
-        rbEmpleado.setBackground(PaletaColores.peach);
-        rbCliente.setBackground(PaletaColores.peach);
-        rbEmpleado.setForeground(PaletaColores.linen);
-        rbCliente.setForeground(PaletaColores.linen);
-        rbEmpleado.setSelected(true);
+        
     }
 
     /**
@@ -50,7 +46,6 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btngrpRol = new javax.swing.ButtonGroup();
         lblNombreUsuario = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
         lblTituloForm = new javax.swing.JLabel();
@@ -64,12 +59,11 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
         txtTelefono = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        rbEmpleado = new javax.swing.JRadioButton();
-        rbCliente = new javax.swing.JRadioButton();
 
-        lblNombreUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblNombreUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblNombreUsuario.setText("Nombre de usuario");
 
+        txtNombreUsuario.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         txtNombreUsuario.setBorder(null);
         txtNombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -77,12 +71,13 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
             }
         });
 
-        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         lblTituloForm.setText("Insertar Empleado");
 
-        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblNombre.setText("Nombre");
 
+        txtNombre.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         txtNombre.setBorder(null);
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -90,9 +85,10 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
             }
         });
 
-        lblApellido.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblApellido.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblApellido.setText("Apellido");
 
+        txtApellido.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         txtApellido.setBorder(null);
         txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -100,9 +96,10 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
             }
         });
 
-        lblEmail.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblEmail.setText("Email");
 
+        txtEmail.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         txtEmail.setBorder(null);
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -110,9 +107,10 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
             }
         });
 
-        lblTelefono.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblTelefono.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblTelefono.setText("Teléfono");
 
+        txtTelefono.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         txtTelefono.setBorder(null);
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -153,12 +151,6 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
             }
         });
 
-        btngrpRol.add(rbEmpleado);
-        rbEmpleado.setText("Empleado");
-
-        btngrpRol.add(rbCliente);
-        rbCliente.setText("Cliente");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,10 +165,6 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbEmpleado)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbCliente))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,15 +212,11 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
                         .addComponent(lblEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbEmpleado)
-                    .addComponent(rbCliente))
-                .addGap(58, 58, 58)
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -283,15 +267,12 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.ButtonGroup btngrpRol;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTituloForm;
-    private javax.swing.JRadioButton rbCliente;
-    private javax.swing.JRadioButton rbEmpleado;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
@@ -300,12 +281,7 @@ public class EmpleadoNuevoForm extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void guardarRegistro() {
-        String rol;
-        if(rbEmpleado.isSelected()){
-            rol = "E";
-        }else{
-            rol = "C";
-        }
+        String rol = "E";
         //crea una lista para los campos a insertar
         List<String> campos = new ArrayList<>();
         // asignar campo por campo los valores a la lista

@@ -76,12 +76,13 @@ public class EmpleadoEditarForm extends javax.swing.JPanel {
             }
         });
 
-        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         lblTituloForm.setText("Modificar Empleado");
 
-        lblNombreUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblNombreUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblNombreUsuario.setText("Nombre de Usuario");
 
+        txtNombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNombreUsuario.setBorder(null);
         txtNombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -89,9 +90,10 @@ public class EmpleadoEditarForm extends javax.swing.JPanel {
             }
         });
 
-        lblPassword.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblPassword.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblPassword.setText("Password");
 
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPassword.setPreferredSize(new java.awt.Dimension(64, 16));
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,9 +106,10 @@ public class EmpleadoEditarForm extends javax.swing.JPanel {
             }
         });
 
-        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblNombre.setText("Nombre");
 
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNombre.setBorder(null);
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -114,9 +117,10 @@ public class EmpleadoEditarForm extends javax.swing.JPanel {
             }
         });
 
-        lblApellido.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblApellido.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblApellido.setText("Apellido");
 
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtApellido.setBorder(null);
         txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -124,9 +128,10 @@ public class EmpleadoEditarForm extends javax.swing.JPanel {
             }
         });
 
-        lblEmail.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblEmail.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblEmail.setText("Email");
 
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtEmail.setBorder(null);
         txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -134,9 +139,10 @@ public class EmpleadoEditarForm extends javax.swing.JPanel {
             }
         });
 
-        lblTelefono.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblTelefono.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblTelefono.setText("Teléfono");
 
+        txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTelefono.setBorder(null);
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

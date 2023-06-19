@@ -63,9 +63,10 @@ public class TicketVerForm extends javax.swing.JPanel {
             }
         });
 
-        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         lblTituloForm.setText("Listado de Tickets");
 
+        ticketsTable.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         ticketsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -74,6 +75,7 @@ public class TicketVerForm extends javax.swing.JPanel {
                 "Nro Ticket", "Usuario", "Descripción", "Fecha Emisión", "Fecha Inicio", "Fecha Fin", "Estado", "Producto", "Dias Estimados", "Prioridad"
             }
         ));
+        ticketsTable.setRowHeight(30);
         jScrollPane1.setViewportView(ticketsTable);
 
         btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
@@ -135,7 +137,7 @@ public class TicketVerForm extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTituloForm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 549, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 345, Short.MAX_VALUE))
                             .addComponent(jScrollPane1)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -152,7 +154,7 @@ public class TicketVerForm extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(lblTituloForm)
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
