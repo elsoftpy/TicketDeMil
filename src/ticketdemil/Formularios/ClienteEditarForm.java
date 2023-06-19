@@ -10,10 +10,7 @@ import global.OperacionesRegistros;
 import global.PaletaColores;
 import java.awt.CardLayout;
 import java.awt.Color;
-<<<<<<< Updated upstream
-=======
 import java.awt.event.KeyEvent;
->>>>>>> Stashed changes
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,20 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-<<<<<<< Updated upstream
-import javax.swing.table.DefaultTableModel;
-=======
->>>>>>> Stashed changes
 
 /**
  *
  * @author antit
  */
 public class ClienteEditarForm extends javax.swing.JPanel {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     JPanel cardsPanel;
     /**
      * Creates new form ClienteEditarForm
@@ -63,27 +52,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< Updated upstream
-        lblEditarCliente = new javax.swing.JLabel();
-        txtUSERNAME = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
-=======
         lblTituloForm = new javax.swing.JLabel();
         lblNombreUsuario = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
@@ -99,7 +67,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
         txtTelefono = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
->>>>>>> Stashed changes
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -178,44 +145,7 @@ public class ClienteEditarForm extends javax.swing.JPanel {
             }
         });
 
-        txtUSERNAME.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUSERNAMEActionPerformed(evt);
-            }
-        });
-        txtUSERNAME.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtUSERNAMEKeyTyped(evt);
-            }
-        });
-
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
-            }
-        });
-
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
-            }
-        });
-
-        jLabel3.setText("E-MAIL:");
-
-        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtApellidoKeyTyped(evt);
-            }
-        });
-
-        jLabel5.setText("APELLIDO:");
-
-        jLabel1.setText("USERNAME:");
-
-        jLabel2.setText("NOMBRE:");
-
-        jLabel4.setText("TELÉFONO:");
+        
 
         btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
         btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -257,33 +187,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< Updated upstream
-                    .addComponent(lblEditarCliente)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtUSERNAME, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,68 +212,12 @@ public class ClienteEditarForm extends javax.swing.JPanel {
                                     .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(lblTituloForm))
                         .addGap(0, 0, Short.MAX_VALUE)))
->>>>>>> Stashed changes
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-<<<<<<< Updated upstream
-                .addComponent(lblEditarCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1)
-                    .addComponent(txtUSERNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void txtUSERNAMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUSERNAMEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUSERNAMEActionPerformed
-
-    private void txtUSERNAMEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUSERNAMEKeyTyped
-
-    }//GEN-LAST:event_txtUSERNAMEKeyTyped
-
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        Character teclado = evt.getKeyChar();
-        if(Character.isDigit(teclado)){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtNombreKeyTyped
-
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        Character teclado = evt.getKeyChar();
-        if(!Character.isDigit(teclado)){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtTelefonoKeyTyped
-
-    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
-        Character teclado = evt.getKeyChar();
-        if(Character.isDigit(teclado)){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtApellidoKeyTyped
-=======
                 .addComponent(lblTituloForm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +258,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
->>>>>>> Stashed changes
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // AGREGAR VALIDACIONES
@@ -424,13 +270,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGuardarKeyReleased
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-<<<<<<< Updated upstream
-        txtNombre.setText("");
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnCancelarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCancelarKeyReleased
-        txtNombre.setText("");
-=======
         limpiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -438,7 +277,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             limpiarCampos();
         }
->>>>>>> Stashed changes
     }//GEN-LAST:event_btnCancelarKeyReleased
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -449,19 +287,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-<<<<<<< Updated upstream
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel lblEditarCliente;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtUSERNAME;
-=======
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNombre;
@@ -475,68 +300,33 @@ public class ClienteEditarForm extends javax.swing.JPanel {
     private javax.swing.JTextField txtNombreUsuario;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtTelefono;
->>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
 
     private void guardarRegistro() {
         //crea una lista para los campos a insertar
         List<String> campos = new ArrayList<>();
         // asignar campo por campo los valores a la lista
-<<<<<<< Updated upstream
-        campos.add(txtUSERNAME.getText());
-=======
         campos.add(String.valueOf(OperacionesRegistros.idRegistroEditar));
         campos.add(txtNombreUsuario.getText());
->>>>>>> Stashed changes
         campos.add(txtNombre.getText());
         campos.add(txtApellido.getText());
         campos.add(txtEmail.getText());
         campos.add(txtTelefono.getText());
         // insertar el registro
-<<<<<<< Updated upstream
-        OperacionesRegistros.insertar(campos, "sp_editar_cliente");
-        // limpiar campos
-        txtUSERNAME.setText("");
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtEmail.setText("");
-        txtTelefono.setText("");
-=======
         OperacionesRegistros.actualizar(campos, "sp_actualizar_cliente");
         // limpiar campos
         limpiarCampos();
         OperacionesRegistros.idRegistroEditar = 0;
->>>>>>> Stashed changes
         // se instancia los formularios a los que van a llevar los botones Nuevo y Editar
         ClienteVerForm clienteVerForm = new ClienteVerForm();
         // encuentra el Panel padre
         cardsPanel = (JPanel) btnGuardar.getParent().getParent();
-<<<<<<< Updated upstream
-        // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoProducto
-=======
         // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnNuevoEmpleado
->>>>>>> Stashed changes
         ControladorMenu.nombreMenuNuevo = "btnVerCliente";
         // cambiar de color el botón activo
         ControladorMenu.cambiarBotonActivo(cardsPanel);
         // trae el layout del pnael padre
         CardLayout cardLayout = (CardLayout) cardsPanel.getLayout();
-<<<<<<< Updated upstream
-        // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoProducto
-        ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, clienteVerForm, "verCliente");
-    }
-
-    private void cargarRegistro() {
-        
-        Connection cn = DBConnection.conectarDB();
-        if(cn == null){
-            JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
-        }else{
-            try{
-                int id = OperacionesRegistros.idRegistroEditar;
-                // sentencia sql para buscar todos los clientes
-                String sql = "SELECT * FROM USUARIOS WHERE ID_USUARIO= ?";
-=======
         // cambia el formulario y pasa un nuevo nombre para poder identificarlo, en este caso nuevoEmpleado
         ControladorMenu.cambiarFormulario(cardLayout, cardsPanel, clienteVerForm, "verCliente");
     }
@@ -566,7 +356,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
                         + "INNER JOIN usuarios u "
                         + "ON c.id_usuario = u.id_usuario "
                         + "WHERE u.id_usuario = ?";
->>>>>>> Stashed changes
                 
                 // prepara la sentencia sql para dar mayor seguridad a la aplicación
                 PreparedStatement st = (PreparedStatement) cn.prepareStatement(sql);
@@ -577,22 +366,11 @@ public class ClienteEditarForm extends javax.swing.JPanel {
                 // recorrer el result set con un while
                 if(rs.next()){
                     // asignamos los valores al campo correspondiente
-<<<<<<< Updated upstream
-                    txtUSERNAME.setText(rs.getString("username"));
-=======
                     txtNombreUsuario.setText(rs.getString("username"));
->>>>>>> Stashed changes
                     txtNombre.setText(rs.getString("nombre"));
                     txtApellido.setText(rs.getString("apellido"));
                     txtEmail.setText(rs.getString("email"));
                     txtTelefono.setText(rs.getString("telefono"));
-<<<<<<< Updated upstream
-                }else{
-                    JOptionPane.showMessageDialog(this,"Registro no encontrado");
-                }
-            }catch(SQLException ex){
-                JOptionPane.showMessageDialog(this,ex.getMessage());
-=======
                 }else {
                     JOptionPane.showMessageDialog(
                         this,
@@ -606,7 +384,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
                         ex.getMessage(),
                         "Demonios",
                         JOptionPane.ERROR_MESSAGE);
->>>>>>> Stashed changes
             }
         }
     }
