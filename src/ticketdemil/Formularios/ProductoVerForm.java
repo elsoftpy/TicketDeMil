@@ -63,11 +63,11 @@ public class ProductoVerForm extends javax.swing.JPanel {
             }
         });
 
-        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         lblTituloForm.setForeground(new java.awt.Color(234, 228, 143));
         lblTituloForm.setText("Listado de Productos");
 
-        productosTable.setFont(new java.awt.Font("Nirmala UI", 0, 12)); // NOI18N
+        productosTable.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         productosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -77,6 +77,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
             }
         ));
         productosTable.setOpaque(false);
+        productosTable.setRowHeight(30);
         jScrollPane1.setViewportView(productosTable);
 
         btnNuevo.setBackground(new java.awt.Color(153, 204, 0));
@@ -154,7 +155,7 @@ public class ProductoVerForm extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblTituloForm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
