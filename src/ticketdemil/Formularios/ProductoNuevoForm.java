@@ -53,6 +53,11 @@ public class ProductoNuevoForm extends javax.swing.JPanel {
         lblNombre.setText("Nombre del producto");
 
         txtNombre.setBorder(null);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
         btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -143,6 +148,10 @@ public class ProductoNuevoForm extends javax.swing.JPanel {
     private void btnCancelarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCancelarKeyReleased
         limpiarCampos();
     }//GEN-LAST:event_btnCancelarKeyReleased
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        OperacionesRegistros.validarLongitud(evt, txtNombre, 50);
+    }//GEN-LAST:event_txtNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

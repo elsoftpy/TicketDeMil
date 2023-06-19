@@ -65,6 +65,11 @@ public class ProductoEditarForm extends javax.swing.JPanel {
         lblNombre.setText("Nombre del producto");
 
         txtNombre.setBorder(null);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
         btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -159,6 +164,10 @@ public class ProductoEditarForm extends javax.swing.JPanel {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         cargarRegistro();
     }//GEN-LAST:event_formComponentShown
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        OperacionesRegistros.validarLongitud(evt, txtNombre, 50);
+    }//GEN-LAST:event_txtNombreKeyTyped
 
     private void cargarRegistro() {
         

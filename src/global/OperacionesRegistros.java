@@ -7,6 +7,7 @@ package global;
 
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -87,6 +88,45 @@ public class OperacionesRegistros {
                 }
                 
             }
+        }
+    }
+    
+    public static void validarLongitud(java.awt.event.KeyEvent evt, JTextField campo, int limite)
+    {
+        int longitud = campo.getText().length();
+        if(longitud > limite){
+            evt.consume();
+            JOptionPane.showMessageDialog(
+                    null,
+                    "El texto solo puede contener " + String.valueOf(limite) + " caracteres",
+                    "Chake",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    public static void validarSoloTexto(java.awt.event.KeyEvent evt, JTextField campo)
+    {
+        Character character = evt.getKeyChar();
+        if(Character.isDigit(character)){
+            evt.consume();
+            JOptionPane.showMessageDialog(
+                    null,
+                    "No puede ingresar números en este campo",
+                    "Chake",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    public static void validarSoloNumeros(java.awt.event.KeyEvent evt, JTextField campo)
+    {
+        Character character = evt.getKeyChar();
+        if(!Character.isDigit(character)){
+            evt.consume();
+            JOptionPane.showMessageDialog(
+                    null,
+                    "El campo es numérico",
+                    "Chake",
+                    JOptionPane.WARNING_MESSAGE);
         }
     }
     

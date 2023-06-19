@@ -73,26 +73,51 @@ public class ClienteNuevoForm extends javax.swing.JPanel {
         lblNombreUsuario.setText("Nombre de usuario");
 
         txtNombreUsuario.setBorder(null);
+        txtNombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreUsuarioKeyTyped(evt);
+            }
+        });
 
         lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         lblNombre.setText("Nombre");
 
         txtNombre.setBorder(null);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         lblApellido.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         lblApellido.setText("Apellido");
 
         txtApellido.setBorder(null);
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
 
         lblEmail.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         lblEmail.setText("Email");
 
         txtEmail.setBorder(null);
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
 
         lblTelefono.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         lblTelefono.setText("Teléfono");
 
         txtTelefono.setBorder(null);
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
         btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -223,6 +248,29 @@ public class ClienteNuevoForm extends javax.swing.JPanel {
             limpiarCampos();
         }
     }//GEN-LAST:event_btnCancelarKeyReleased
+
+    private void txtNombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreUsuarioKeyTyped
+        OperacionesRegistros.validarLongitud(evt, txtNombreUsuario, 50);
+    }//GEN-LAST:event_txtNombreUsuarioKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        OperacionesRegistros.validarLongitud(evt, txtNombre, 50);
+        OperacionesRegistros.validarSoloTexto(evt, txtNombre);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        OperacionesRegistros.validarLongitud(evt, txtApellido, 50);
+        OperacionesRegistros.validarSoloTexto(evt, txtApellido);
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        OperacionesRegistros.validarLongitud(evt, txtEmail, 100);
+    }//GEN-LAST:event_txtEmailKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        OperacionesRegistros.validarLongitud(evt, txtTelefono, 50);
+        OperacionesRegistros.validarSoloNumeros(evt, txtTelefono);
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
