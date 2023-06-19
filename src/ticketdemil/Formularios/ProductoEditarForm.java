@@ -59,7 +59,7 @@ public class ProductoEditarForm extends javax.swing.JPanel {
         });
 
         lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
-        lblTituloForm.setText("Editar Producto");
+        lblTituloForm.setText("Modificar Producto");
 
         lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblNombre.setText("Nombre del producto");
