@@ -259,7 +259,7 @@ public class ClienteVerForm extends javax.swing.JPanel {
             // encuentra el Panel padre
             cardsPanel = (JPanel) btnNuevo.getParent().getParent();
             // define el nombre botón del menú que va a quedar activo, en este caso debe ser btnEditarCliente
-            ControladorMenu.nombreMenuNuevo = "btnEditarCliente";
+            ControladorMenu.nombreMenuNuevo = "btnVerCliente";
             // cambiar de color el botón activo
             ControladorMenu.cambiarBotonActivo(cardsPanel);
             // trae el layout del pnael padre

@@ -8,6 +8,7 @@ import global.ControladorMenu;
 import global.DBConnection;
 import global.OperacionesRegistros;
 import global.PaletaColores;
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -25,6 +26,8 @@ import javax.swing.JPanel;
  * @author antit
  */
 public class ClienteEditarForm extends javax.swing.JPanel {
+
+    // en esta variable vamos a guardar el contenedor de los paneles
     JPanel cardsPanel;
     /**
      * Creates new form ClienteEditarForm
@@ -75,7 +78,7 @@ public class ClienteEditarForm extends javax.swing.JPanel {
         });
 
         lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
-        lblTituloForm.setText("Modificar Empleado");
+        lblTituloForm.setText("Modificar Cliente");
 
         lblNombreUsuario.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
         lblNombreUsuario.setText("Nombre");
@@ -111,41 +114,6 @@ public class ClienteEditarForm extends javax.swing.JPanel {
         lblTelefono.setText("Teléfono");
 
         txtTelefono.setBorder(null);
-
-        btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
-        btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setText("Guardar");
-        btnGuardar.setBorder(null);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        btnGuardar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                btnGuardarKeyReleased(evt);
-            }
-        });
-
-        btnCancelar.setBackground(java.awt.Color.red);
-        btnCancelar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setBorder(null);
-        btnCancelar.setOpaque(true);
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        btnCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                btnCancelarKeyReleased(evt);
-            }
-        });
-
-        
 
         btnGuardar.setBackground(new java.awt.Color(153, 204, 0));
         btnGuardar.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
@@ -256,7 +224,7 @@ public class ClienteEditarForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
+        //
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
