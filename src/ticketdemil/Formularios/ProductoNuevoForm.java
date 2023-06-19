@@ -46,12 +46,13 @@ public class ProductoNuevoForm extends javax.swing.JPanel {
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 48)); // NOI18N
         lblTituloForm.setText("Insertar Producto");
 
-        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 12)); // NOI18N
+        lblNombre.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         lblNombre.setText("Nombre del producto");
 
+        txtNombre.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         txtNombre.setBorder(null);
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -106,7 +107,7 @@ public class ProductoNuevoForm extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblNombre)
                                     .addComponent(lblTituloForm))
-                                .addGap(0, 547, Short.MAX_VALUE))))
+                                .addGap(0, 355, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,7 +128,7 @@ public class ProductoNuevoForm extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(344, Short.MAX_VALUE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
