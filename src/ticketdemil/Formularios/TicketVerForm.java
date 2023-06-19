@@ -4,12 +4,18 @@
  */
 package ticketdemil.Formularios;
 
+import global.ControladorMenu;
 import global.DBConnection;
+import global.OperacionesRegistros;
+import global.PaletaColores;
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +29,8 @@ public class TicketVerForm extends javax.swing.JPanel {
      */
     public TicketVerForm() {
         initComponents();
+        this.setBackground(PaletaColores.peach);
+        lblTituloForm.setForeground(Color.red);
     }
 
     /**
@@ -34,7 +42,7 @@ public class TicketVerForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblTituloForm = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ticketsTable = new javax.swing.JTable();
 
@@ -45,7 +53,8 @@ public class TicketVerForm extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("LISTADO DE TICKETS");
+        lblTituloForm.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        lblTituloForm.setText("LISTADO DE TICKETS");
 
         ticketsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -65,36 +74,37 @@ public class TicketVerForm extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jLabel1))
+                    .addComponent(lblTituloForm))
                 .addGap(96, 96, 96))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel1)
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(lblTituloForm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(ticketsTable.getRowCount()== 0){
+      
         cargarTabla();            
-        }
+        
     }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTituloForm;
     private javax.swing.JTable ticketsTable;
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
         Connection cn = DBConnection.conectarDB();
-        
+        DefaultTableModel dt = (DefaultTableModel) ticketsTable.getModel();
+        dt.setRowCount(0);
         if(cn == null){
             JOptionPane.showMessageDialog(this,"No hay conexión a la BD");
         }else{
@@ -138,7 +148,7 @@ public class TicketVerForm extends javax.swing.JPanel {
                         String.valueOf(rs.getInt("dias_estimado")),
                         rs.getString("prioridad"),
                     };
-                    DefaultTableModel dt = (DefaultTableModel) ticketsTable.getModel();
+                    
                     dt.addRow(datosTabla);
                 }
             }catch(SQLException ex){
